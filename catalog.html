@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body { background: #111; color: #fff; font-family: sans-serif; padding: 20px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+.card { background: #222; border-radius: 8px; overflow: hidden; border: 1px solid #333; text-align: center; font-size: 13px; }
+.card img { width: 100%; height: 160px; object-fit: cover; display: block; }
+.card .title { padding: 8px 4px; font-weight: bold; color: #e21b2d; }
+</style>
+</head>
+<body>
+<h2>Image Catalog (103 Images)</h2>
+<div class="grid">
+<script>
+for(let i=1; i<=103; i++) {
+  document.write(`<div class="card"><img src="images/image-${i}.png" loading="lazy"><div class="title">image-${i}.png</div></div>`);
+}
+</script>
+</div>
+</body>
+</html>

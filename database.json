@@ -1,0 +1,36 @@
+{
+  "testRides": [],
+  "serviceEnquiries": [],
+  "contactEnquiries": [],
+  "motorcycleOrders": [
+    {
+      "id": "MOTO-T2W1GR8C",
+      "timestamp": "2026-10-15T07:54:52.734Z",
+      "status": "Under Review",
+      "motorcycleModel": "BMW S1000RR M-Sport",
+      "vehicleCondition": "Brand New (Zero-Mileage Factory Allocation)",
+      "customerName": "Test Client",
+      "mobile": "+91 99999 88888",
+      "email": "client@test.com",
+      "dealership": "Bengaluru Flagship Experience Pavilion (Koramangala)",
+      "purchaseMethod": "Direct Wire / Full Upfront Dealership Transfer",
+      "deliveryTimeline": "Immediate Showroom Allocation (In-Stock)",
+      "notes": "Testing vehicle sale order submission"
+    }
+  ],
+  "accessoryOrders": [],
+  "promotions": [
+    {
+      "id": 1,
+      "title": "Black Edition Superbike Package",
+      "discount": "Save ₹85,000 on Accessories & Ceramic Protection",
+      "validUntil": "Limited Time"
+    },
+    {
+      "id": 2,
+      "title": "Carbon Racing Equipment Bundle",
+      "discount": "20% off Shoei & Alpinestars track-pack with bike purchase",
+      "validUntil": "This Month"
+    }
+  ]
+}

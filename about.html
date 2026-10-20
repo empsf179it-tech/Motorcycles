@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us — MOTORCYCLES Premium Dealership & Performance Heritage</title>
+  <meta name="description" content="Discover the philosophy, master technicians, dyno testing facilities, and curated superbike showroom behind the Motorcycles brand.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&family=Syne:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .page-hero {
+      position: relative;
+      padding-top: 150px;
+      padding-bottom: 75px;
+      background: radial-gradient(circle at 50% 35%, rgba(181, 18, 27, 0.28) 0%, rgba(5, 5, 5, 1) 75%);
+      border-bottom: 1px solid var(--surface-border);
+      overflow: hidden;
+    }
+    .about-story-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+    .about-visual-stack {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .about-img-box {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--surface-border);
+      background: var(--dark-surface);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+    }
+    .about-img-box img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .about-img-box:hover img {
+      transform: scale(1.05);
+    }
+    .about-img-box-caption {
+      padding: 12px 16px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--light-grey);
+      border-top: 1px solid var(--surface-border);
+      background: var(--charcoal-black);
+    }
+    .diff-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    @media (max-width: 1024px) {
+      .about-story-grid { grid-template-columns: 1fr; }
+      .diff-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-handover-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .about-story-grid { grid-template-columns: 1fr !important; }
+      .about-visual-stack { grid-template-columns: 1fr !important; }
+      .diff-grid { grid-template-columns: 1fr !important; }
+      .about-handover-grid { grid-template-columns: 1fr !important; gap: 30px !important; }
+    }
+    @media (min-width: 768px) and (max-width: 1024px) {
+      .diff-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    }
+    @media (max-width: 768px) {
+      .about-stats-row {
+        flex-direction: column !important;
+        gap: 16px !important;
+      }
+      .about-stat-item {
+        width: 100% !important;
+      }
+      .about-handover-actions {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 14px !important;
+        width: 100% !important;
+      }
+      .about-handover-actions .btn-red,
+      .about-handover-actions .btn-secondary {
+        width: 100% !important;
+        max-width: 320px !important;
+        min-height: 50px !important;
+        height: 50px !important;
+        box-sizing: border-box !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        padding: 0 20px !important;
+        font-size: 0.95rem !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.02em !important;
+        line-height: 1.2 !important;
+        flex: none !important;
+      }
+    }
+    @media (max-width: 767px) {
+      .about-story-grid { grid-template-columns: 1fr !important; }
+      .about-visual-stack { grid-template-columns: 1fr !important; }
+      .diff-grid { grid-template-columns: 1fr !important; }
+      .about-handover-grid { grid-template-columns: 1fr !important; }
+      .diff-grid > :nth-child(3):last-child {
+        grid-column: auto !important;
+        justify-self: stretch !important;
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SITE HEADER -->
+  <header class="site-header">
+    <div class="site-container header-inner">
+      <a href="index.html" class="brand-logo">
+        <span class="brand-badge"><img src="images/website-logo.png" alt="Motorcycles Logo" class="brand-logo-img"></span>
+        <span>MOTORCYCLES</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link active">About</a></li>
+          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li><a href="collection.html" class="nav-link">Motorcycle Collection</a></li>
+          <li><a href="accessories.html" class="nav-link">Accessories & Gear</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button id="cartToggle" class="cart-btn" aria-label="View Shopping Cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+          <span id="cartBadge" class="cart-badge">0</span>
+        </button>
+        <button onclick="openVehicleSaleOrderModal()" class="btn-red nav-sale-order-btn" aria-label="Open Vehicle Sale Order">Vehicle Sale Order</button>
+        <button id="mobileMenuToggle" class="mobile-toggle" aria-label="Open Mobile Menu">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE DRAWER & CART DRAWER -->
+  <div id="drawerOverlay" class="drawer-overlay"></div>
+  <aside id="mobileDrawer" class="mobile-drawer">
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px;">
+      <div class="brand-logo" style="font-size: 1.05rem;">
+        <span class="brand-badge"><img src="images/website-logo.png" alt="Motorcycles Logo" class="brand-logo-img"></span>
+        <span>MOTORCYCLES</span>
+      </div>
+      <button id="closeMobileDrawer" style="background: none; border: none; color: #fff; cursor: pointer;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+    <ul style="list-style: none; display: flex; flex-direction: column; gap: 18px; margin-bottom: 30px;">
+      <li><a href="index.html" class="nav-link" style="font-size: 1.1rem;">Home</a></li>
+      <li><a href="about.html" class="nav-link active" style="font-size: 1.1rem;">About</a></li>
+      <li><a href="services.html" class="nav-link" style="font-size: 1.1rem;">Services</a></li>
+      <li><a href="collection.html" class="nav-link" style="font-size: 1.1rem;">Motorcycle Collection</a></li>
+      <li><a href="accessories.html" class="nav-link" style="font-size: 1.1rem;">Accessories & Gear</a></li>
+      <li><a href="contact.html" class="nav-link" style="font-size: 1.1rem;">Contact</a></li>
+      <li>
+        <button class="mobile-drawer-cart-btn" onclick="openCart(); document.getElementById('mobileDrawer')?.classList.remove('open'); document.getElementById('drawerOverlay')?.classList.remove('active'); document.body.style.overflow='';" aria-label="Open Shopping Bag">
+          <span class="mobile-cart-icon-wrap">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+            <span id="cartBadgeMobile" class="cart-badge-mobile">0</span>
+          </span>
+          <span>Shopping Cart</span>
+        </button>
+      </li>
+    </ul>
+    <button onclick="openVehicleSaleOrderModal(); document.getElementById('mobileDrawer')?.classList.remove('open'); document.getElementById('drawerOverlay')?.classList.remove('active'); document.body.style.overflow='';" class="btn-red" style="width: 100%; border: none; cursor: pointer; font-weight: 700;">Vehicle Sale Order</button>
+  </aside>
+
+  <div id="cartDrawer" class="cart-drawer">
+    <div class="cart-drawer-header">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-red)" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+        <h3 class="font-heading" style="font-size: 1.25rem;">Shopping Bag</h3>
+      </div>
+      <button id="closeCartDrawer" style="background: none; border: none; color: #fff; cursor: pointer;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+    <div id="cartItemsList" class="cart-drawer-body"></div>
+    <div id="cartEmptyState" style="padding: 40px 20px; text-align: center; color: var(--metallic-grey);">
+      <p>Your shopping bag is currently empty.</p>
+    </div>
+    <div class="cart-drawer-footer">
+      <div style="display: flex; justify-content: space-between; margin-bottom: 20px; font-size: 1.15rem; font-weight: 800; color: var(--accent-red);">
+        <span>Total:</span>
+        <span id="cartTotalAmount">₹0</span>
+      </div>
+      <a href="accessories.html" class="btn-red" style="width: 100%;">Proceed to Order Form</a>
+    </div>
+  </div>
+
+  <main>
+    <!-- SECTION 1: ABOUT HERO -->
+    <section class="page-hero">
+      <div class="site-container">
+        <div class="hero-center-content">
+          <div class="eyebrow eyebrow-center">OUR HERITAGE & MISSION</div>
+          <h1 class="font-heading" style="font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.15; margin-bottom: 20px;">
+            Driven by Passion. <br><span style="color: var(--accent-red);">Obsessed with Perfection.</span>
+          </h1>
+          <p class="section-desc">
+            We are a premier motorcycling dealership founded by riders for riders. We represent world-leading engineering, uncompromised safety, and an authentic community of track, touring, and custom motorcycle enthusiasts.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- HERITAGE GALLERY SHOWCASE (Image 41) - Placed Below Hero Section -->
+    <section style="padding-top: 60px; padding-bottom: 20px;">
+      <div class="site-container">
+        <!-- IMAGE 41: BMW Motorrad Heritage Gallery & Central Stage -->
+        <div style="border-radius: var(--radius-lg); overflow: hidden; border: 1px solid rgba(226, 27, 45, 0.3); box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9);" data-tilt>
+          <img src="images/image-41.png" alt="BMW Motorrad Heritage Gallery with R18 Cruiser on Central Stage" style="width: 100%; height: clamp(320px, 45vw, 550px); object-fit: cover;">
+          <div style="padding: 16px 24px; background: var(--dark-surface); border-top: 1px solid var(--surface-border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+            <span style="font-weight: 700; color: #fff;">Heritage Gallery & Central Podium Showcase</span>
+            <span style="color: var(--accent-red); font-size: 0.88rem; font-weight: 600;">BMW Motorrad Heritage Exhibition</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: ABOUT THE BRAND & CUSTOM V-TWINS (Images 30, 31) -->
+    <section class="section-spacer">
+      <div class="site-container">
+        <div class="about-story-grid">
+          <div>
+            <div class="eyebrow">AMERICAN V-TWIN CUSTOM HERITAGE</div>
+            <h2 class="section-title">Iconic Custom Cruisers & Bespoke V-Twin Artistry</h2>
+            <p style="color: var(--light-grey); line-height: 1.8; margin-bottom: 20px;">
+              Our heritage collection honors the enduring legacy of American heavy cruisers. From custom hand-painted flame graphics on the Harley-Davidson Breakout to the formidable silhouette of the Fat Boy with solid disc Lakester wheels, each vehicle embodies unmistakable swagger and rumble.
+            </p>
+            <p style="color: var(--text-dim); line-height: 1.8; margin-bottom: 30px;">
+              Whether you seek a one-of-a-kind custom paint build with raked forks and drag bars or a Milwaukee-Eight powerhouse for cross-country cruising, our specialists provide deep expertise and certified provenance.
+            </p>
+            <div class="about-stats-row" style="display: flex; gap: 20px;">
+              <div class="about-stat-item" style="border-left: 3px solid var(--accent-red); padding-left: 16px;">
+                <div class="stat-number" style="font-size: 1.8rem;">100%</div>
+                <div class="stat-label">Verified Provenance</div>
+              </div>
+              <div class="about-stat-item" style="border-left: 3px solid var(--accent-red); padding-left: 16px;">
+                <div class="stat-number" style="font-size: 1.8rem; white-space: nowrap;">Milwaukee-8</div>
+                <div class="stat-label">Big Twin Power</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-visual-stack">
+            <!-- IMAGE 30: Custom Flame Breakout -->
+            <div class="about-img-box" data-tilt>
+              <img src="images/image-30.png" alt="Custom Harley-Davidson Breakout Cruiser with Hand-Painted Flame Graphics">
+              <div class="about-img-box-caption">Custom Flame Harley Breakout</div>
+            </div>
+            <!-- IMAGE 31: Fat Boy 107 -->
+            <div class="about-img-box" data-tilt>
+              <img src="images/image-31.png" alt="Harley-Davidson Fat Boy 107 with Solid Disc Lakester Wheels">
+              <div class="about-img-box-caption">Harley-Davidson Fat Boy 107</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: VINTAGE CLASSICS & HERITAGE TOURING (Images 32, 33) -->
+    <section class="section-spacer" style="background: var(--charcoal-black);">
+      <div class="site-container">
+        <div class="about-story-grid" style="direction: rtl;">
+          <div style="direction: ltr;">
+            <div class="eyebrow">TIMELESS CLASSICS & HERITAGE TOURING</div>
+            <h2 class="section-title">Celebrating Vintage Icons & Two-Tone Heritage</h2>
+            <p style="color: var(--light-grey); line-height: 1.8; margin-bottom: 20px;">
+              Motorcycle greatness spans across eras. Our curation celebrates milestone machines that revolutionized the two-wheeled landscape — including the landmark 1970 Honda CB750 Four with its transverse inline-four engine, quad chrome exhausts, and candy red tank.
+            </p>
+            <p style="color: var(--text-dim); line-height: 1.8; margin-bottom: 28px;">
+              Alongside Japanese icons sits the grandeur of American two-tone cruisers — finished in deep burgundy and cream with studded leather saddlebags, triple passing lamps, and whitewall wire wheels for timeless highway cruising.
+            </p>
+            <a href="collection.html" class="btn-red">Explore Classic Collection</a>
+          </div>
+
+          <div class="about-visual-stack" style="direction: ltr;">
+            <!-- IMAGE 32: 1970 Honda CB750 Four -->
+            <div class="about-img-box" data-tilt>
+              <img src="images/image-32.png" alt="1970 Candy Red Honda CB750 Four Vintage Transverse Inline-Four">
+              <div class="about-img-box-caption">1970 Honda CB750 Four Classic</div>
+            </div>
+            <!-- IMAGE 33: Two-Tone Burgundy Cruiser -->
+            <div class="about-img-box" data-tilt>
+              <img src="images/image-33.png" alt="Two-Tone Burgundy and Cream Heritage Classic Cruiser with Whitewall Tires">
+              <div class="about-img-box-caption">Two-Tone Heritage Touring Cruiser</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: ARCHITECTURAL GALLERIES & ADVENTURE (Images 34, 35) -->
+    <section class="section-spacer">
+      <div class="site-container">
+        <div class="about-story-grid">
+          <div>
+            <div class="eyebrow">ARCHITECTURAL SHOWROOM SPACES</div>
+            <h2 class="section-title">Curated Modern Galleries & Alpine Touring Hubs</h2>
+            <p style="color: var(--light-grey); line-height: 1.8; margin-bottom: 20px;">
+              Every square meter of our dealership is crafted to immerse riders in the excitement of motorcycling. Wander through sleek contemporary showrooms crowned with architectural slatted timber ceilings, mood spotlighting, and plush consultation lounges.
+            </p>
+            <p style="color: var(--text-dim); line-height: 1.8; margin-bottom: 28px;">
+              Adventure enthusiasts can plan global journeys in our specialized GS expedition hall — framed by alpine mountain murals, map consultation tables, and fully equipped transcontinental tourers with aluminum luggage.
+            </p>
+            <a href="contact.html" class="btn-secondary">Visit Our Showrooms &rarr;</a>
+          </div>
+
+          <div class="about-visual-stack">
+            <!-- IMAGE 34: Architectural Showroom -->
+            <div class="about-img-box" data-tilt>
+              <img src="images/image-34.png" alt="Modern Architectural Showroom Floor with Slatted Wood Ceiling and Lounge">
+              <div class="about-img-box-caption">Architectural Timber Salon</div>
+            </div>
+            <!-- IMAGE 35: GS Adventure Hall -->
+            <div class="about-img-box" data-tilt>
+              <img src="images/image-35.png" alt="BMW GS Adventure Touring Exhibition Hall with Alpine Mountain Mural">
+              <div class="about-img-box-caption">Alpine GS Adventure Exhibition</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: WHAT MAKES US DIFFERENT (Images 36, 37, 38, 39) -->
+    <section class="section-spacer" style="background: var(--charcoal-black);">
+      <div class="site-container">
+        <div style="text-align: center; max-width: 700px; margin: 0 auto 50px;">
+          <div class="eyebrow">DISTINCT ADVANTAGES</div>
+          <h2 class="section-title">What Sets Us Apart</h2>
+          <p class="section-desc" style="margin: 0 auto;">Four distinct highlights that define our world-class dealership environment.</p>
+        </div>
+
+        <div class="diff-grid">
+          <!-- Item 1 (Image 36) -->
+          <div class="about-img-box" data-tilt>
+            <img src="images/image-36.png" alt="Multi-Brand Superbike and Cruiser Megastore Showroom Aisle">
+            <div style="padding: 20px;">
+              <h4 style="font-family: var(--font-heading); font-size: 1.1rem; margin-bottom: 8px;">Multi-Brand Megastore</h4>
+              <p style="color: var(--text-dim); font-size: 0.85rem; line-height: 1.6;">Spacious showroom aisles displaying dozens of premier superbikes, naked roadsters, and touring cruisers side-by-side.</p>
+            </div>
+          </div>
+
+          <!-- Item 2 (Image 37) -->
+          <div class="about-img-box" data-tilt>
+            <img src="images/image-37.png" alt="BMW Soulfuel Custom Cruiser Lounge with Chesterfield Leather Sofas">
+            <div style="padding: 20px;">
+              <h4 style="font-family: var(--font-heading); font-size: 1.1rem; margin-bottom: 8px;">Soulfuel Lounge</h4>
+              <p style="color: var(--text-dim); font-size: 0.85rem; line-height: 1.6;">Unwind in private leather Chesterfield club seating surrounded by bespoke BMW R18 cruisers and artisanal coffee.</p>
+            </div>
+          </div>
+
+          <!-- Item 3 (Image 38) -->
+          <div class="about-img-box" data-tilt>
+            <img src="images/image-38.png" alt="Motorcycle Lifestyle Apparel Boutique with Leather Jackets and Helmets">
+            <div style="padding: 20px;">
+              <h4 style="font-family: var(--font-heading); font-size: 1.1rem; margin-bottom: 8px;">Rider Apparel Boutique</h4>
+              <p style="color: var(--text-dim); font-size: 0.85rem; line-height: 1.6;">Curated lifestyle boutique featuring genuine leather riding jackets, ECE-certified helmets, and bespoke apparel.</p>
+            </div>
+          </div>
+
+          <!-- Item 4 (Image 39) -->
+          <div class="about-img-box" data-tilt>
+            <img src="images/image-39.png" alt="Two-Tier Dealership Showroom with Suspended Custom Yellow Motorcycle">
+            <div style="padding: 20px;">
+              <h4 style="font-family: var(--font-heading); font-size: 1.1rem; margin-bottom: 8px;">Aerial Mezzanine Display</h4>
+              <p style="color: var(--text-dim); font-size: 0.85rem; line-height: 1.6;">Architectural multi-tier showroom galleries showcasing custom showpieces on elevated hydraulic display platforms.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: VIP HANDOVER & CALL TO ACTION (Image 40) -->
+    <section class="section-spacer">
+      <div class="site-container">
+        <div class="about-handover-grid" style="background: linear-gradient(135deg, rgba(181, 18, 27, 0.2), var(--dark-surface)); border: 1px solid rgba(226, 27, 45, 0.35); border-radius: var(--radius-lg); padding: clamp(30px, 5vw, 60px); align-items: center;">
+          <div>
+            <div class="eyebrow">EXCLUSIVE ITALIAN EXOTICA</div>
+            <h2 class="font-heading" style="font-size: clamp(2rem, 3.5vw, 2.8rem); margin-bottom: 16px;">The MV Agusta VIP Handover Suite</h2>
+            <p style="color: var(--light-grey); line-height: 1.8; margin-bottom: 28px;">
+              Experience the pinnacle of motorcycle craftsmanship in our dedicated MV Agusta presentation suite. Bask in the warm glow of illuminated marquee logos, consult in private lounge chairs, and receive your handcrafted Italian machine with true ceremony.
+            </p>
+            <div class="about-handover-actions" style="display: flex; gap: 16px; flex-wrap: wrap;">
+              <a href="collection.html" class="btn-red">Browse Inventory</a>
+              <a href="contact.html" class="btn-secondary">Plan Showroom Visit</a>
+            </div>
+          </div>
+
+          <!-- IMAGE 40: Customer VIP Handover Suite -->
+          <div style="border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--surface-border); box-shadow: 0 15px 40px rgba(0,0,0,0.8);" data-tilt>
+            <img src="images/image-40.png" alt="Official MV Agusta VIP Client Lounge with Illuminated Marquee and Brutale Superbike" style="width: 100%; height: 320px; object-fit: cover;">
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- SITE FOOTER -->
+  <footer class="site-footer">
+    <div class="site-container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="brand-logo" style="margin-bottom: 18px;">
+            <span class="brand-badge"><img src="images/website-logo.png" alt="Motorcycles Logo" class="brand-logo-img"></span>
+            <span>MOTORCYCLES</span>
+          </div>
+          <p style="color: var(--metallic-grey); font-size: 0.92rem; line-height: 1.7; max-width: 380px; margin-bottom: 20px;">
+            The definitive destination for premium motorcycle sales, track machines, and rider accessories. Engineered for extraordinary riding adventures.
+          </p>
+          <div class="footer-showroom-hours">Showroom Hours: Mon – Sat: 9:30 AM – 7:30 PM</div>
+          <div class="footer-social-links">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="X">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Brand</a></li>
+            <li><a href="services.html">Dealership Services</a></li>
+            <li><a href="collection.html">Motorcycle Collection</a></li>
+            <li><a href="accessories.html">Accessories & Gear</a></li>
+            <li><a href="contact.html">Contact & Locations</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Showroom Hub</h4>
+          <p style="color: var(--metallic-grey); font-size: 0.92rem; line-height: 1.7; margin-bottom: 10px;">
+            Flagship Experience Pavilion<br>
+            48 Inner Ring Road, Koramangala<br>
+            Bengaluru, Karnataka 560034
+          </p>
+          <p style="color: var(--light-grey); font-size: 0.92rem;">
+            Phone: +91 80 4912 3400<br>
+            Email: info@motorcycles-apex.com
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Certification</h4>
+          <p style="color: var(--text-dim); font-size: 0.88rem; line-height: 1.6;">
+            All pre-owned motorcycles include certified 120-point mechanical inspection sheets and clean registry records.
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 MOTORCYCLES Platform. All rights reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+
+  <!-- VEHICLE SALE ORDER MODAL POPUP -->
+  <div id="vehicleSaleOrderModal" class="app-modal">
+    <div class="app-modal-content" style="max-width: 760px;">
+      <button class="modal-close-btn" onclick="closeVehicleSaleOrderModal()" aria-label="Close Modal">&times;</button>
+      
+      <div style="border-bottom: 1px solid var(--surface-border); padding-bottom: 18px; margin-bottom: 24px;">
+        <div class="eyebrow" style="margin-bottom: 6px;">OFFICIAL VEHICLE SALES & ALLOCATION</div>
+        <h2 class="font-heading" style="font-size: 1.6rem; color: #fff; margin-bottom: 6px;">Vehicle Sale Order</h2>
+        <p style="color: var(--metallic-grey); font-size: 0.9rem; line-height: 1.5;">
+          Direct showroom purchase reservation & sales allocation. Submit your vehicle preferences and customer details below.
+        </p>
+      </div>
+
+      <form id="vehicleSaleOrderForm">
+        <div id="vehicleSaleOrderFeedback" class="alert-feedback"></div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label">Select Motorcycle Model *</label>
+            <select name="motorcycleModel" id="modalVehicleSelect" class="form-control form-select" required>
+              <option value="">-- Choose Motorcycle Model --</option>
+              <optgroup label="Superbikes & Sport Bikes">
+                <option value="Honda CBR1000RR-R Fireblade SP">Honda CBR1000RR-R Fireblade SP (₹23,63,000)</option>
+                <option value="BMW S1000RR M-Sport">BMW S1000RR M-Sport (₹24,95,000)</option>
+                <option value="Ducati Panigale V4 S">Ducati Panigale V4 S (₹27,72,000)</option>
+                <option value="Kawasaki Ninja ZX-10R KRT Edition">Kawasaki Ninja ZX-10R KRT (₹16,79,000)</option>
+                <option value="Yamaha YZF-R1 Icon Blue">Yamaha YZF-R1 Icon Blue (₹20,39,000)</option>
+                <option value="Suzuki GSX-R1000 Black Edition">Suzuki GSX-R1000 (₹19,80,000)</option>
+                <option value="Yamaha YZF-R6 Supersport">Yamaha YZF-R6 Supersport (₹15,40,000)</option>
+                <option value="Kawasaki Ninja 650 KRT Edition">Kawasaki Ninja 650 (₹7,16,000)</option>
+              </optgroup>
+              <optgroup label="Naked Streetfighters">
+                <option value="KTM 390 Duke ABS Streetfighter">KTM 390 Duke ABS (₹3,11,000)</option>
+                <option value="Ducati Streetfighter V4 S">Ducati Streetfighter V4 S (₹28,20,000)</option>
+                <option value="Kawasaki Z900 Metallic Spark">Kawasaki Z900 (₹9,38,000)</option>
+                <option value="Triumph Speed Triple 1200 RS">Triumph Speed Triple 1200 RS (₹18,25,000)</option>
+                <option value="Bajaj Dominar 400 Touring Edition">Bajaj Dominar 400 (₹2,32,000)</option>
+              </optgroup>
+              <optgroup label="Cruisers & Modern Classics">
+                <option value="Kawasaki Vulcan 900 Classic">Kawasaki Vulcan 900 Classic (₹10,49,000)</option>
+                <option value="Harley-Davidson Fat Boy 107">Harley-Davidson Fat Boy 107 (₹21,99,000)</option>
+                <option value="Harley-Davidson Breakout Custom Flame">Harley Breakout Custom (₹24,50,000)</option>
+                <option value="Royal Enfield Classic 350 Chrome Red">Royal Enfield Classic 350 (₹2,24,000)</option>
+                <option value="Royal Enfield Hunter 350 Rebel Blue">Royal Enfield Hunter 350 (₹1,74,000)</option>
+                <option value="Jawa 42 Bobber Moonstone White">Jawa 42 Bobber (₹2,28,000)</option>
+              </optgroup>
+              <optgroup label="Adventure Touring">
+                <option value="KTM 1290 Super Adventure S">KTM 1290 Super Adventure S (₹22,75,000)</option>
+                <option value="BMW R1250 GS Trophy Edition">BMW R1250 GS Trophy (₹23,10,000)</option>
+                <option value="BMW F850 GS Adventure Rallye">BMW F850 GS Adventure (₹13,75,000)</option>
+              </optgroup>
+              <option value="Bespoke Custom Build / Unlisted Import">Other / Custom Import Consultation</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Purchase Condition *</label>
+            <select name="vehicleCondition" class="form-control form-select" required>
+              <option value="Brand New (Zero-Mileage Factory Allocation)">Brand New (Zero-Mileage Factory Allocation)</option>
+              <option value="Certified Pre-Owned (120-Point Inspected with Warranty)">Certified Pre-Owned (120-Point Inspected)</option>
+              <option value="Track / Race Prepared Specification">Track / Race Prepared Specification</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label">Customer Full Name *</label>
+            <input type="text" name="customerName" class="form-control" required placeholder="e.g. Rahul Sharma">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Mobile Number *</label>
+            <input type="tel" name="mobile" class="form-control" required placeholder="+91 98765 43210">
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label">Email Address *</label>
+            <input type="email" name="email" class="form-control" required placeholder="rahul@example.com">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Preferred Showroom / Delivery City *</label>
+            <select name="dealership" class="form-control form-select" required>
+              <option value="Bengaluru Flagship Experience Pavilion (Koramangala)">Bengaluru Flagship Pavilion (Koramangala)</option>
+              <option value="Mumbai High-Performance Marine Hub">Mumbai Marine Hub</option>
+              <option value="Delhi NCR International Circuit Facility">Delhi NCR Circuit Facility</option>
+              <option value="Hyderabad Showroom Hub">Hyderabad Showroom Hub</option>
+              <option value="Chennai Coast Track Pavilion">Chennai Coast Track Pavilion</option>
+              <option value="Enclosed Doorstep Nationwide Delivery">Enclosed Doorstep Nationwide Delivery</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label">Preferred Payment & Financing *</label>
+            <select name="purchaseMethod" class="form-control form-select" required>
+              <option value="Direct Wire / Full Upfront Dealership Transfer">Direct Wire / Full Dealership Transfer</option>
+              <option value="Bank Loan & Low EMI Financing Assistance">Bank Loan & Low EMI Financing Assistance</option>
+              <option value="Existing Motorcycle Trade-In / Exchange">Existing Motorcycle Trade-In / Exchange</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Expected Delivery Timeline *</label>
+            <select name="deliveryTimeline" class="form-control form-select" required>
+              <option value="Immediate Showroom Allocation (In-Stock)">Immediate Allocation (In-Stock Models)</option>
+              <option value="Within 15 to 30 Days">Within 15 to 30 Days</option>
+              <option value="Custom Scheduled Delivery Date">Custom Scheduled Delivery Date</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Custom Specifications & Delivery Notes (Optional)</label>
+          <textarea name="notes" class="form-control" rows="3" placeholder="Specify optional Akrapovič exhaust fitment, riding gear bundle sizing, registration preferences, or trade-in bike details..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-red" style="width: 100%; padding: 13px; font-size: 1rem; font-weight: 700; justify-content: center; margin-top: 6px;">
+          Submit Vehicle Sale Order &rarr;
+        </button>
+        <p style="text-align: center; color: var(--metallic-grey); font-size: 0.8rem; margin-top: 10px;">
+          🔒 Authorized reservation enquiry. No immediate payment deducted online. Sales consultant connects to confirm allocation.
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Drop to Top Button -->
+  <button id="scrollToTopBtn" class="scroll-to-top-btn" aria-label="Drop to top" title="Drop to top">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+</body>
+</html>

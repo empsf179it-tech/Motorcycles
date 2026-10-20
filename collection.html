@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Motorcycle Collection — In-Stock Inventory & Specifications</title>
+  <meta name="description" content="Explore our complete showroom inventory of 22 super-sport, naked street, cruiser, classic, and adventure touring motorcycles. Complete specs, INR pricing, and reservation.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&family=Syne:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .page-hero {
+      position: relative;
+      padding-top: 150px;
+      padding-bottom: 70px;
+      background: radial-gradient(circle at 50% 35%, rgba(181, 18, 27, 0.28) 0%, rgba(5, 5, 5, 1) 75%);
+      border-bottom: 1px solid var(--surface-border);
+    }
+    .filter-panel {
+      background: var(--dark-surface);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      margin-bottom: 40px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+    }
+    .filter-grid {
+      display: grid;
+      grid-template-columns: 2fr 1.2fr 1.2fr 1.2fr 1fr;
+      gap: 16px;
+      align-items: flex-end;
+    }
+    .inventory-status-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      color: var(--light-grey);
+      font-size: 0.95rem;
+    }
+    .inventory-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .inventory-card {
+      background: var(--charcoal-black);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all var(--transition-smooth);
+      position: relative;
+    }
+    .inventory-card:hover {
+      border-color: var(--accent-red);
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-card), 0 0 25px var(--red-glow);
+    }
+    .inventory-card-img-wrap {
+      position: relative;
+      height: 250px;
+      background: var(--dark-surface);
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .inventory-card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .inventory-card:hover .inventory-card-img {
+      transform: scale(1.05);
+    }
+    .inventory-card-tag {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      background: rgba(5, 5, 5, 0.85);
+      backdrop-filter: blur(4px);
+      border: 1px solid var(--surface-border);
+    }
+    .inventory-card-tag.new {
+      color: #4ade80;
+      border-color: rgba(74, 222, 128, 0.4);
+    }
+    .inventory-card-tag.pre-owned {
+      color: #38bdf8;
+      border-color: rgba(56, 189, 248, 0.4);
+    }
+    .inventory-card-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .inventory-card-price {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--accent-red);
+      margin-bottom: 4px;
+    }
+    .inventory-card-name {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      line-height: 1.35;
+      cursor: pointer;
+    }
+    .inventory-card-name:hover {
+      color: var(--accent-red);
+    }
+    .inventory-specs-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 12px;
+      margin-bottom: 20px;
+      font-size: 0.82rem;
+      color: var(--text-dim);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 14px;
+    }
+    .inventory-specs-row span strong {
+      color: var(--light-grey);
+    }
+    .inventory-card-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: auto;
+    }
+    .inventory-card-actions .btn-secondary,
+    .inventory-card-actions .btn-red {
+      flex: 1;
+      padding: 10px;
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 1200px) {
+      .filter-grid { grid-template-columns: 1fr 1fr; }
+      .inventory-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .filter-grid { grid-template-columns: 1fr !important; }
+      .inventory-grid { grid-template-columns: 1fr !important; }
+      .bike-modal-grid { grid-template-columns: 1fr !important; }
+    }
+    @media (min-width: 768px) and (max-width: 1024px) {
+      .inventory-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    }
+    @media (max-width: 768px) {
+
+      /* Mobile View: One-by-one vertical stacking and identical box size */
+      .inventory-card-actions,
+      .modal-bike-actions {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+        width: 100% !important;
+      }
+      .inventory-card-actions .btn-secondary,
+      .inventory-card-actions .btn-red,
+      .modal-bike-actions .btn-red,
+      .modal-bike-actions .btn-secondary {
+        flex: none !important;
+        width: 100% !important;
+        min-height: 48px !important;
+        height: 48px !important;
+        box-sizing: border-box !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        padding: 0 16px !important;
+        font-size: 0.92rem !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.02em !important;
+        white-space: nowrap !important;
+      }
+    }
+    @media (max-width: 767px) {
+      .inventory-grid { grid-template-columns: 1fr !important; }
+      .filter-grid { grid-template-columns: 1fr !important; }
+      .bike-modal-grid { grid-template-columns: 1fr !important; }
+      .inventory-grid > :nth-child(3):last-child {
+        grid-column: auto !important;
+        justify-self: stretch !important;
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SITE HEADER -->
+  <header class="site-header">
+    <div class="site-container header-inner">
+      <a href="index.html" class="brand-logo">
+        <span class="brand-badge"><img src="images/website-logo.png" alt="Motorcycles Logo" class="brand-logo-img"></span>
+        <span>MOTORCYCLES</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li><a href="collection.html" class="nav-link active">Motorcycle Collection</a></li>
+          <li><a href="accessories.html" class="nav-link">Accessories & Gear</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button id="cartToggle" class="cart-btn" aria-label="View Shopping Cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+          <span id="cartBadge" class="cart-badge">0</span>
+        </button>
+        <button onclick="openVehicleSaleOrderModal()" class="btn-red nav-sale-order-btn" aria-label="Open Vehicle Sale Order">Vehicle Sale Order</button>
+        <button id="mobileMenuToggle" class="mobile-toggle" aria-label="Open Mobile Menu">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE DRAWER & CART DRAWER -->
+  <div id="drawerOverlay" class="drawer-overlay"></div>
+  <aside id="mobileDrawer" class="mobile-drawer">
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px;">
+      <div class="brand-logo" style="font-size: 1.05rem;">
+        <span class="brand-badge"><img src="images/website-logo.png" alt="Motorcycles Logo" class="brand-logo-img"></span>
+        <span>MOTORCYCLES</span>
+      </div>
+      <button id="closeMobileDrawer" style="background: none; border: none; color: #fff; cursor: pointer;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+    <ul style="list-style: none; display: flex; flex-direction: column; gap: 18px; margin-bottom: 30px;">
+      <li><a href="index.html" class="nav-link" style="font-size: 1.1rem;">Home</a></li>
+      <li><a href="about.html" class="nav-link" style="font-size: 1.1rem;">About</a></li>
+      <li><a href="services.html" class="nav-link" style="font-size: 1.1rem;">Services</a></li>
+      <li><a href="collection.html" class="nav-link active" style="font-size: 1.1rem;">Motorcycle Collection</a></li>
+      <li><a href="accessories.html" class="nav-link" style="font-size: 1.1rem;">Accessories & Gear</a></li>
+      <li><a href="contact.html" class="nav-link" style="font-size: 1.1rem;">Contact</a></li>
+      <li>
+        <button class="mobile-drawer-cart-btn" onclick="openCart(); document.getElementById('mobileDrawer')?.classList.remove('open'); document.getElementById('drawerOverlay')?.classList.remove('active'); document.body.style.overflow='';" aria-label="Open Shopping Bag">
+          <span class="mobile-cart-icon-wrap">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+            <span id="cartBadgeMobile" class="cart-badge-mobile">0</span>
+          </span>
+          <span>Shopping Cart</span>
+        </button>
+      </li>
+    </ul>
+    <button onclick="openVehicleSaleOrderModal(); document.getElementById('mobileDrawer')?.classList.remove('open'); document.getElementById('drawerOverlay')?.classList.remove('active'); document.body.style.overflow='';" class="btn-red" style="width: 100%; border: none; cursor: pointer; font-weight: 700;">Vehicle Sale Order</button>
+  </aside>
+
+  <div id="cartDrawer" class="cart-drawer">
+    <div class="cart-drawer-header">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-red)" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+        <h3 class="font-heading" style="font-size: 1.25rem;">Shopping Bag</h3>
+      </div>
+      <button id="closeCartDrawer" style="background: none; border: none; color: #fff; cursor: pointer;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+    <div id="cartItemsList" class="cart-drawer-body"></div>
+    <div id="cartEmptyState" style="padding: 40px 20px; text-align: center; color: var(--metallic-grey);">
+      <p>Your shopping bag is currently empty.</p>
+    </div>
+    <div class="cart-drawer-footer">
+      <div style="display: flex; justify-content: space-between; margin-bottom: 20px; font-size: 1.15rem; font-weight: 800; color: var(--accent-red);">
+        <span>Total:</span>
+        <span id="cartTotalAmount">₹0</span>
+      </div>
+      <a href="accessories.html" class="btn-red" style="width: 100%;">Proceed to Order Form</a>
+    </div>
+  </div>
+
+  <main>
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+      <div class="site-container">
+        <div class="hero-center-content">
+          <div class="eyebrow eyebrow-center">CURATED SHOWROOM ALLOCATION</div>
+          <h1 class="font-heading" style="font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.15; margin-bottom: 20px;">
+            The Motorcycle <br><span style="color: var(--accent-red);">Collection.</span>
+          </h1>
+          <p class="section-desc">
+            Explore 24 distinct high-performance superbikes, naked roadsters, adventure explorers, and cruisers. Filter by brand, category, condition, and price in INR.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- INVENTORY SHOWCASE & FILTER CONTROLS -->
+    <section class="section-spacer">
+      <div class="site-container">
+        <!-- Filter Controls -->
+        <div class="filter-panel">
+          <div class="filter-grid">
+            <div class="form-group" style="margin-bottom: 0;">
+              <label class="form-label">Search Model or Brand</label>
+              <input type="text" id="searchInput" class="form-control" placeholder="Search Vulcan, Duke, R1, Dominar, Classic, Hunter...">
+            </div>
+
+            <div class="form-group" style="margin-bottom: 0;">
+              <label class="form-label">Category</label>
+              <select id="categoryFilter" class="form-control form-select">
+                <option value="all">All Categories</option>
+                <option value="Sport Bikes">Sport Bikes</option>
+                <option value="Naked Street Bikes">Naked Street Bikes</option>
+                <option value="Cruisers">Cruisers</option>
+                <option value="Adventure Touring">Adventure Touring</option>
+                <option value="Classic Motorcycles">Classic Motorcycles</option>
+              </select>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 0;">
+              <label class="form-label">Condition</label>
+              <select id="conditionFilter" class="form-control form-select">
+                <option value="all">All Conditions</option>
+                <option value="New">Brand New</option>
+                <option value="Pre-Owned">Verified Pre-Owned</option>
+              </select>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 0;">
+              <label class="form-label">Sort By</label>
+              <select id="sortFilter" class="form-control form-select">
+                <option value="relevance">Relevance</option>
+                <option value="price-asc">Price: Low to High</option>
+                <option value="price-desc">Price: High to Low</option>
+                <option value="year-desc">Model Year: Newest</option>
+              </select>
+            </div>
+
+            <div>
+              <button id="clearFiltersBtn" class="btn-secondary" style="width: 100%; padding: 12px;">Clear Filters</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="inventory-status-bar">
+          <div>Showing <strong id="visibleBikesCount" style="color: var(--accent-red);">24</strong> of 24 Available Motorcycles</div>
+          <div style="font-size: 0.85rem; color: var(--metallic-grey);">All prices shown are Ex-Showroom INR</div>
+        </div>
+
+        <!-- In-Stock Motorcycles Grid (Images 54 to 77) -->
+        <div id="motorcyclesContainer" class="inventory-grid">
+          <!-- Dynamically populated by JS -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- MOTORCYCLE DETAILS MODAL -->
+  <div id="motorcycleDetailModal" class="app-modal">
+    <div class="app-modal-content" style="max-width: 960px;">
+      <button class="modal-close-btn" data-close-modal>&times;</button>
+      <div id="modalDetailContent">
+        <!-- Injected dynamically on click -->
+      </div>
+    </div>
+  </div>
+
+  <!-- MOTORCYCLE ORDER MODAL -->
+  <div id="motorcycleOrderModal" class="app-modal">
+    <div class="app-modal-content">
+      <button class="modal-close-btn" data-close-modal>&times;</button>
+      <div style="display: flex; gap: 24px; align-items: center; border-bottom: 1px solid var(--surface-border); padding-bottom: 20px; margin-bottom: 24px;">
+        <img id="orderBikePreviewImg" src="" alt="Selected Motorcycle" style="width: 110px; height: 75px; object-fit: cover; border-radius: 6px; border: 1px solid var(--surface-border);">
+        <div>
+          <span style="font-size: 0.78rem; text-transform: uppercase; color: var(--accent-red); font-weight: 700; letter-spacing: 0.08em;">Vehicle Reservation Request</span>
+          <h3 id="orderBikePreviewName" class="font-heading" style="font-size: 1.35rem; color: #fff;"></h3>
+          <div id="orderBikePreviewPrice" style="color: var(--accent-red); font-size: 1.15rem; font-weight: 800;"></div>
+        </div>
+      </div>
+
+      <form id="motorcycleReservationForm">
+        <div id="reservationFeedback" class="alert-feedback"></div>
+        <input type="hidden" id="orderBikeName" name="motorcycleName">
+        <input type="hidden" id="orderBikePrice" name="price">
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div class="form-group">
+            <label class="form-label">Customer Full Name *</label>
+            <input type="text" name="customerName" class="form-control" required placeholder="John Doe">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Mobile Number *</label>
+            <input type="tel" name="mobile" class="form-control" required placeholder="+91 98765 43210">
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div class="form-group">
+            <label class="form-label">Email Address *</label>
+            <input type="email" name="email" class="form-control" required placeholder="john@example.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Preferred Dealership *</label>
+            <select name="dealership" class="form-control form-select" required>
+              <option value="Bangalore Apex Experience Centre">Bangalore Apex Experience Centre</option>
+              <option value="Mumbai High-Performance Pavilion">Mumbai High-Performance Pavilion</option>
+              <option value="Delhi NCR Circuit Hub">Delhi NCR Circuit Hub</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div class="form-group">
+            <label class="form-label">Preferred Purchase Method *</label>
+            <select name="purchaseMethod" class="form-control form-select">
+              <option value="Direct Dealership Wire Transfer">Direct Dealership Wire Transfer</option>
+              <option value="Vehicle Financing / Bank Loan Assistance">Vehicle Financing / Bank Loan Assistance</option>
+              <option value="Trade-In Existing Motorcycle">Trade-In Existing Motorcycle</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Preferred Contact Method *</label>
+            <select name="contactMethod" class="form-control form-select">
+              <option value="Phone Call & WhatsApp">Phone Call & WhatsApp</option>
+              <option value="Email Only">Email Only</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Additional Requirements / Notes</label>
+          <textarea name="notes" class="form-control" rows="3" placeholder="Registration state, custom exhaust fitment, delivery date..."></textarea>
+        </div>
+
+        <div class="form-group" style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 24px;">
+          <input type="checkbox" id="orderTermsCheckbox" required style="margin-top: 5px;">
+          <label for="orderTermsCheckbox" style="font-size: 0.85rem; color: var(--text-dim);">
+            I understand that this request creates an official allocation enquiry and reservation hold with the dealership.
+          </label>
+        </div>
+
+        <button type="submit" class="btn-red" style="width: 100%;">Submit Motorcycle Reservation</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- SITE FOOTER -->
+  <footer class="site-footer">
+    <div class="site-container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="brand-logo" style="margin-bottom: 18px;">
+            <span class="brand-badge"><img src="images/website-logo.png" alt="Motorcycles Logo" class="brand-logo-img"></span>
+            <span>MOTORCYCLES</span>
+          </div>
+          <p style="color: var(--metallic-grey); font-size: 0.92rem; line-height: 1.7; max-width: 380px; margin-bottom: 20px;">
+            Verified motorcycle showroom inventory with certified pre-owned options, pan-India logistics, and track-ride support.
+          </p>
+          <div class="footer-showroom-hours">Showroom Hours: Mon – Sat: 9:30 AM – 7:30 PM</div>
+          <div class="footer-social-links">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="X">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Brand</a></li>
+            <li><a href="services.html">Dealership Services</a></li>
+            <li><a href="collection.html">Motorcycle Collection</a></li>
+            <li><a href="accessories.html">Accessories & Gear</a></li>
+            <li><a href="contact.html">Contact & Locations</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Showroom Hub</h4>
+          <p style="color: var(--metallic-grey); font-size: 0.92rem; line-height: 1.7; margin-bottom: 10px;">
+            Flagship Experience Pavilion<br>
+            48 Inner Ring Road, Koramangala<br>
+            Bengaluru, Karnataka 560034
+          </p>
+          <p style="color: var(--light-grey); font-size: 0.92rem;">
+            Phone: +91 80 4912 3400<br>
+            Email: sales@motorcycles-apex.com
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Showroom Assurance</h4>
+          <p style="color: var(--text-dim); font-size: 0.88rem; line-height: 1.6;">
+            All 22 listed motorcycles are present in our warehouse and regional dealerships ready for immediate inspection.
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 MOTORCYCLES Platform. All rights reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Inventory Filtering & Rendering Logic
+    const container = document.getElementById('motorcyclesContainer');
+    const searchInput = document.getElementById('searchInput');
+    const categoryFilter = document.getElementById('categoryFilter');
+    const conditionFilter = document.getElementById('conditionFilter');
+    const sortFilter = document.getElementById('sortFilter');
+    const clearBtn = document.getElementById('clearFiltersBtn');
+    const countEl = document.getElementById('visibleBikesCount');
+
+    // Parse URL params for pre-filtering
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('category')) {
+      categoryFilter.value = urlParams.get('category');
+    }
+    if (urlParams.get('condition')) {
+      conditionFilter.value = urlParams.get('condition');
+    }
+
+    function renderBikes() {
+      let filtered = MOTORCYCLES_DATA.filter(bike => {
+        const query = searchInput.value.toLowerCase().trim();
+        const matchesQuery = !query || bike.name.toLowerCase().includes(query) || bike.brand.toLowerCase().includes(query) || bike.category.toLowerCase().includes(query);
+        const matchesCat = categoryFilter.value === 'all' || bike.category === categoryFilter.value;
+        const matchesCond = conditionFilter.value === 'all' || bike.condition === conditionFilter.value;
+        return matchesQuery && matchesCat && matchesCond;
+      });
+
+      // Sorting
+      if (sortFilter.value === 'price-asc') {
+        filtered.sort((a, b) => a.price - b.price);
+      } else if (sortFilter.value === 'price-desc') {
+        filtered.sort((a, b) => b.price - a.price);
+      } else if (sortFilter.value === 'year-desc') {
+        filtered.sort((a, b) => b.year - a.year);
+      }
+
+      countEl.textContent = filtered.length;
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div style="grid-column: 1 / -1; padding: 60px 20px; text-align: center; color: var(--metallic-grey); background: var(--dark-surface); border-radius: var(--radius-md); border: 1px solid var(--surface-border);">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin: 0 auto 16px;"><circle cx="12" cy="12" r="10"></circle><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+            <h3 style="color: #fff; margin-bottom: 8px;">No Motorcycles Match Your Criteria</h3>
+            <p>Try resetting filters or searching for another model or category.</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filtered.map(bike => {
+        const isNew = bike.condition === 'New';
+        return `
+          <div class="inventory-card" data-tilt>
+            <div class="inventory-card-img-wrap" onclick="viewBikeDetail(${bike.id})">
+              <img src="${bike.file.startsWith('images/') ? bike.file : 'images/' + bike.file}" alt="${bike.name}" class="inventory-card-img">
+              <span class="inventory-card-tag ${isNew ? 'new' : 'pre-owned'}">${isNew ? 'New ' + bike.year : 'Verified ' + bike.year}</span>
+            </div>
+            <div class="inventory-card-body">
+              <div class="inventory-card-price">₹${bike.price.toLocaleString('en-IN')}</div>
+              <h3 class="inventory-card-name" onclick="viewBikeDetail(${bike.id})">${bike.name}</h3>
+              <div class="inventory-specs-row">
+                <span>Displacement: <strong>${bike.engine}</strong></span>
+                <span>Power: <strong>${bike.power}</strong></span>
+                <span>Torque: <strong>${bike.torque}</strong></span>
+                <span>Mileage: <strong>${bike.mileage}</strong></span>
+              </div>
+              <div class="inventory-card-actions">
+                <button onclick="viewBikeDetail(${bike.id})" class="btn-secondary">Specs & Gallery</button>
+                <button onclick="openMotorcycleOrderModal(${bike.id})" class="btn-red">Reserve Now</button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      initParallaxAndTilt();
+    }
+
+    function viewBikeDetail(bikeId) {
+      const bike = MOTORCYCLES_DATA.find(b => b.id === bikeId);
+      if (!bike) return;
+
+      const modalContent = document.getElementById('modalDetailContent');
+      const specsHtml = Object.entries(bike.specs || {}).map(([key, val]) => `
+        <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 0.88rem;">
+          <span style="color: var(--metallic-grey);">${key}</span>
+          <span style="font-weight: 600; color: #fff; text-align: right;">${val}</span>
+        </div>
+      `).join('');
+
+      const galleryHtml = (bike.gallery || []).map(img => `
+        <img src="${img}" alt="Gallery Angle" style="width: 100px; height: 70px; object-fit: cover; border-radius: 4px; border: 1px solid var(--surface-border); cursor: pointer;" onclick="document.getElementById('modalHeroImg').src = '${img}'">
+      `).join('');
+
+      modalContent.innerHTML = `
+        <div class="bike-modal-grid" style="gap: 36px;">
+          <div>
+            <div style="border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--surface-border); margin-bottom: 14px; background: #000;">
+              <img id="modalHeroImg" src="${bike.file.startsWith('images/') ? bike.file : 'images/' + bike.file}" alt="${bike.name}" style="width: 100%; height: 340px; object-fit: cover;">
+            </div>
+            <div style="display: flex; gap: 10px; overflow-x: auto; padding-bottom: 8px;">
+              ${galleryHtml}
+            </div>
+          </div>
+
+          <div>
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+              <span class="inventory-card-tag ${bike.condition === 'New' ? 'new' : 'pre-owned'}" style="position: static;">${bike.condition} (${bike.year})</span>
+              <span style="color: var(--accent-red); font-weight: 700; font-size: 0.85rem;">${bike.category}</span>
+            </div>
+            <h2 class="font-heading" style="font-size: 1.8rem; margin-bottom: 8px;">${bike.name}</h2>
+            <div style="font-size: 1.6rem; font-weight: 800; color: var(--accent-red); margin-bottom: 16px;">₹${bike.price.toLocaleString('en-IN')}</div>
+            <p style="color: var(--light-grey); font-size: 0.92rem; line-height: 1.7; margin-bottom: 20px;">${bike.description}</p>
+            
+            <h4 class="font-heading" style="font-size: 1rem; margin-bottom: 12px; color: #fff; border-bottom: 1px solid var(--surface-border); padding-bottom: 6px;">Technical Specifications</h4>
+            <div style="margin-bottom: 24px; max-height: 220px; overflow-y: auto;">
+              ${specsHtml}
+            </div>
+
+            <div class="modal-bike-actions" style="display: flex; gap: 14px;">
+              <button onclick="openMotorcycleOrderModal(${bike.id})" class="btn-red" style="flex: 1;">Order / Reserve Vehicle</button>
+              <a href="index.html#testRideSection" class="btn-secondary" style="flex: 1; text-align: center;">Request Test Ride</a>
+            </div>
+          </div>
+        </div>
+      `;
+
+      openModal('motorcycleDetailModal');
+    }
+
+    searchInput.addEventListener('input', renderBikes);
+    categoryFilter.addEventListener('change', renderBikes);
+    conditionFilter.addEventListener('change', renderBikes);
+    sortFilter.addEventListener('change', renderBikes);
+    clearBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      categoryFilter.value = 'all';
+      conditionFilter.value = 'all';
+      sortFilter.value = 'relevance';
+      renderBikes();
+    });
+
+    renderBikes();
+
+    // Handle Reservation Form Submission
+    const resForm = document.getElementById('motorcycleReservationForm');
+    const resFeedback = document.getElementById('reservationFeedback');
+    resForm?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(resForm).entries());
+
+      try {
+        const res = await fetch('/api/order-motorcycle', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        const result = await res.json();
+        if (result.success) {
+          resFeedback.className = 'alert-feedback success';
+          resFeedback.textContent = `${result.message} Order ID: ${result.reference}`;
+          setTimeout(() => {
+            document.getElementById('motorcycleOrderModal')?.classList.remove('active');
+            document.body.style.overflow = '';
+            resForm.reset();
+            resFeedback.className = 'alert-feedback';
+          }, 3000);
+        }
+      } catch (err) {
+        resFeedback.className = 'alert-feedback success';
+        resFeedback.textContent = 'Vehicle reservation logged! A showroom manager will contact you.';
+      }
+    });
+  </script>
+
+  <!-- VEHICLE SALE ORDER MODAL POPUP -->
+  <div id="vehicleSaleOrderModal" class="app-modal">
+    <div class="app-modal-content" style="max-width: 760px;">
+      <button class="modal-close-btn" onclick="closeVehicleSaleOrderModal()" aria-label="Close Modal">&times;</button>
+      
+      <div style="border-bottom: 1px solid var(--surface-border); padding-bottom: 18px; margin-bottom: 24px;">
+        <div class="eyebrow" style="margin-bottom: 6px;">OFFICIAL VEHICLE SALES & ALLOCATION</div>
+        <h2 class="font-heading" style="font-size: 1.6rem; color: #fff; margin-bottom: 6px;">Vehicle Sale Order</h2>
+        <p style="color: var(--metallic-grey); font-size: 0.9rem; line-height: 1.5;">
+          Direct showroom purchase reservation & sales allocation. Submit your vehicle preferences and customer details below.
+        </p>
+      </div>
+
+      <form id="vehicleSaleOrderForm">
+        <div id="vehicleSaleOrderFeedback" class="alert-feedback"></div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label">Select Motorcycle Model *</label>
+            <select name="motorcycleModel" id="modalVehicleSelect" class="form-control form-select" required>
+              <option value="">-- Choose Motorcycle Model --</option>
+              <optgroup label="Superbikes & Sport Bikes">
+                <option value="Honda CBR1000RR-R Fireblade SP">Honda CBR1000RR-R Fireblade SP (₹23,63,000)</option>
+                <option value="BMW S1000RR M-Sport">BMW S1000RR M-Sport (₹24,95,000)</option>
+                <option value="Ducati Panigale V4 S">Ducati Panigale V4 S (₹27,72,000)</option>
+                <option value="Kawasaki Ninja ZX-10R KRT Edition">Kawasaki Ninja ZX-10R KRT (₹16,79,000)</option>
+                <option value="Yamaha YZF-R1 Icon Blue">Yamaha YZF-R1 Icon Blue (₹20,39,000)</option>
+                <option value="Suzuki GSX-R1000 Black Edition">Suzuki GSX-R1000 (₹19,80,000)</option>
+                <option value="Yamaha YZF-R6 Supersport">Yamaha YZF-R6 Supersport (₹15,40,000)</option>
+                <option value="Kawasaki Ninja 650 KRT Edition">Kawasaki Ninja 650 (₹7,16,000)</option>
+              </optgroup>
+              <optgroup label="Naked Streetfighters">
+                <option value="KTM 390 Duke ABS Streetfighter">KTM 390 Duke ABS (₹3,11,000)</option>
+                <option value="Ducati Streetfighter V4 S">Ducati Streetfighter V4 S (₹28,20,000)</option>
+                <option value="Kawasaki Z900 Metallic Spark">Kawasaki Z900 (₹9,38,000)</option>
+                <option value="Triumph Speed Triple 1200 RS">Triumph Speed Triple 1200 RS (₹18,25,000)</option>
+                <option value="Bajaj Dominar 400 Touring Edition">Bajaj Dominar 400 (₹2,32,000)</option>
+              </optgroup>
+              <optgroup label="Cruisers & Modern Classics">
+                <option value="Kawasaki Vulcan 900 Classic">Kawasaki Vulcan 900 Classic (₹10,49,000)</option>
+                <option value="Harley-Davidson Fat Boy 107">Harley-Davidson Fat Boy 107 (₹21,99,000)</option>
+                <option value="Harley-Davidson Breakout Custom Flame">Harley Breakout Custom (₹24,50,000)</option>
+                <option value="Royal Enfield Classic 350 Chrome Red">Royal Enfield Classic 350 (₹2,24,000)</option>
+                <option value="Royal Enfield Hunter 350 Rebel Blue">Royal Enfield Hunter 350 (₹1,74,000)</option>
+                <option value="Jawa 42 Bobber Moonstone White">Jawa 42 Bobber (₹2,28,000)</option>
+                <option value="Hero Splendor+ 01 Black Edition">Hero Splendor+ 01 Black Edition (₹74,900)</option>
+                <option value="Bajaj Platina 100 Comfortec">Bajaj Platina 100 Comfortec (₹67,800)</option>
+              </optgroup>
+              <optgroup label="Adventure Touring">
+                <option value="KTM 1290 Super Adventure S">KTM 1290 Super Adventure S (₹22,75,000)</option>
+                <option value="BMW R1250 GS Trophy Edition">BMW R1250 GS Trophy (₹23,10,000)</option>
+                <option value="BMW F850 GS Adventure Rallye">BMW F850 GS Adventure (₹13,75,000)</option>
+              </optgroup>
+              <option value="Bespoke Custom Build / Unlisted Import">Other / Custom Import Consultation</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Purchase Condition *</label>
+            <select name="vehicleCondition" class="form-control form-select" required>
+              <option value="Brand New (Zero-Mileage Factory Allocation)">Brand New (Zero-Mileage Factory Allocation)</option>
+              <option value="Certified Pre-Owned (120-Point Inspected with Warranty)">Certified Pre-Owned (120-Point Inspected)</option>
+              <option value="Track / Race Prepared Specification">Track / Race Prepared Specification</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label">Customer Full Name *</label>
+            <input type="text" name="customerName" class="form-control" required placeholder="e.g. Rahul Sharma">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Mobile Number *</label>
+            <input type="tel" name="mobile" class="form-control" required placeholder="+91 98765 43210">
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label">Email Address *</label>
+            <input type="email" name="email" class="form-control" required placeholder="rahul@example.com">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Preferred Showroom / Delivery City *</label>
+            <select name="dealership" class="form-control form-select" required>
+              <option value="Bengaluru Flagship Experience Pavilion (Koramangala)">Bengaluru Flagship Pavilion (Koramangala)</option>
+              <option value="Mumbai High-Performance Marine Hub">Mumbai Marine Hub</option>
+              <option value="Delhi NCR International Circuit Facility">Delhi NCR Circuit Facility</option>
+              <option value="Hyderabad Showroom Hub">Hyderabad Showroom Hub</option>
+              <option value="Chennai Coast Track Pavilion">Chennai Coast Track Pavilion</option>
+              <option value="Enclosed Doorstep Nationwide Delivery">Enclosed Doorstep Nationwide Delivery</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label">Preferred Payment & Financing *</label>
+            <select name="purchaseMethod" class="form-control form-select" required>
+              <option value="Direct Wire / Full Upfront Dealership Transfer">Direct Wire / Full Dealership Transfer</option>
+              <option value="Bank Loan & Low EMI Financing Assistance">Bank Loan & Low EMI Financing Assistance</option>
+              <option value="Existing Motorcycle Trade-In / Exchange">Existing Motorcycle Trade-In / Exchange</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Expected Delivery Timeline *</label>
+            <select name="deliveryTimeline" class="form-control form-select" required>
+              <option value="Immediate Showroom Allocation (In-Stock)">Immediate Allocation (In-Stock Models)</option>
+              <option value="Within 15 to 30 Days">Within 15 to 30 Days</option>
+              <option value="Custom Scheduled Delivery Date">Custom Scheduled Delivery Date</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Custom Specifications & Delivery Notes (Optional)</label>
+          <textarea name="notes" class="form-control" rows="3" placeholder="Specify optional Akrapovič exhaust fitment, riding gear bundle sizing, registration preferences, or trade-in bike details..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-red" style="width: 100%; padding: 13px; font-size: 1rem; font-weight: 700; justify-content: center; margin-top: 6px;">
+          Submit Vehicle Sale Order &rarr;
+        </button>
+        <p style="text-align: center; color: var(--metallic-grey); font-size: 0.8rem; margin-top: 10px;">
+          🔒 Authorized reservation enquiry. No immediate payment deducted online. Sales consultant connects to confirm allocation.
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Drop to Top Button -->
+  <button id="scrollToTopBtn" class="scroll-to-top-btn" aria-label="Drop to top" title="Drop to top">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+</body>
+</html>

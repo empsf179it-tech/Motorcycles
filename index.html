@@ -1,0 +1,1837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MOTORCYCLES — Premium Performance Motorcycle Showroom</title>
+  <meta name="description" content="Discover extraordinary super-sport motorcycles, naked street machines, cruisers, adventure tourers, and track-certified riding gear.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&family=Syne:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Hero Section Specifics */
+    .hero-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding-top: 130px;
+      padding-bottom: 80px;
+      overflow: hidden;
+      background: radial-gradient(circle at 65% 50%, rgba(181, 18, 27, 0.16) 0%, rgba(5, 5, 5, 1) 70%);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      align-items: center;
+      gap: 50px;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-badge-strip {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .hero-badge-pill {
+      background: rgba(226, 27, 45, 0.12);
+      border: 1px solid rgba(226, 27, 45, 0.3);
+      color: var(--accent-red);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 20px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .hero-headline {
+      font-size: clamp(2.8rem, 5.5vw, 4.6rem);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 22px;
+    }
+    .hero-headline span.red-glow-text {
+      color: var(--accent-red);
+      text-shadow: 0 0 25px rgba(226, 27, 45, 0.45);
+    }
+    .hero-lead {
+      color: var(--light-grey);
+      font-size: clamp(1.05rem, 1.3vw, 1.25rem);
+      line-height: 1.7;
+      margin-bottom: 36px;
+      max-width: 580px;
+    }
+    .hero-cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+    .hero-stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .stat-number {
+      font-family: var(--font-heading);
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: var(--white);
+    }
+    .stat-label {
+      font-size: 0.82rem;
+      color: var(--metallic-grey);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .hero-visual-stage {
+      position: relative;
+      perspective: 1200px;
+    }
+    .hero-visual-frame {
+      position: relative;
+      border-radius: var(--radius-lg);
+      padding: 12px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(181, 18, 27, 0.15));
+      border: 1px solid rgba(226, 27, 45, 0.25);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 45px rgba(181, 18, 27, 0.2);
+      transition: transform 0.3s ease-out;
+    }
+    .hero-main-img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      border-radius: var(--radius-md);
+      display: block;
+      filter: contrast(1.05) brightness(0.98);
+    }
+    .hero-floating-spec {
+      position: absolute;
+      bottom: -25px;
+      left: 30px;
+      background: rgba(16, 16, 16, 0.92);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(226, 27, 45, 0.3);
+      padding: 14px 22px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
+    }
+
+    /* Category Cards */
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .category-card {
+      background: var(--dark-surface);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all var(--transition-smooth);
+      position: relative;
+    }
+    .category-card:hover {
+      border-color: var(--accent-red);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(181, 18, 27, 0.2);
+    }
+    .category-card-img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .category-card:hover .category-card-img {
+      transform: scale(1.06);
+    }
+    .category-card-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .category-card-count {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--accent-red);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .category-card-title {
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .category-card-desc {
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      flex: 1;
+    }
+
+    /* Featured Bikes Grid */
+    .bikes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .bike-card {
+      background: var(--charcoal-black);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all var(--transition-smooth);
+    }
+    .bike-card:hover {
+      border-color: var(--accent-red);
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-card), 0 0 20px var(--red-glow);
+    }
+    .bike-img-wrap {
+      position: relative;
+      height: 240px;
+      overflow: hidden;
+      background: var(--dark-surface);
+    }
+    .bike-card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .bike-card:hover .bike-card-img {
+      transform: scale(1.05);
+    }
+    .bike-condition-tag {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      background: rgba(5, 5, 5, 0.85);
+      backdrop-filter: blur(4px);
+      border: 1px solid var(--surface-border);
+    }
+    .bike-condition-tag.new {
+      color: #4ade80;
+      border-color: rgba(74, 222, 128, 0.4);
+    }
+    .bike-condition-tag.pre-owned {
+      color: #38bdf8;
+      border-color: rgba(56, 189, 248, 0.4);
+    }
+    .bike-card-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .bike-card-price {
+      font-family: var(--font-heading);
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--accent-red);
+      margin-bottom: 4px;
+    }
+    .bike-card-name {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      line-height: 1.35;
+    }
+    .bike-specs-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .bike-spec-pill {
+      font-size: 0.78rem;
+      background: var(--dark-surface);
+      border: 1px solid var(--surface-border);
+      padding: 4px 8px;
+      border-radius: 4px;
+      color: var(--light-grey);
+    }
+    .bike-card-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: auto;
+    }
+
+    /* Engineering Feature Row */
+    .engineering-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .engineering-item {
+      background: var(--dark-surface);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: all var(--transition-smooth);
+    }
+    .engineering-item:hover {
+      border-color: var(--accent-red);
+    }
+    .engineering-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+    .engineering-body {
+      padding: 22px;
+    }
+
+    /* Benefits Grid */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .benefit-card {
+      background: var(--charcoal-black);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: all var(--transition-smooth);
+    }
+    .benefit-card:hover {
+      border-color: var(--accent-red);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.8), 0 0 20px var(--red-glow);
+    }
+    .benefit-card-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .benefit-card-body {
+      padding: 20px;
+    }
+
+    /* Booking Section */
+    .booking-section {
+      background: radial-gradient(circle at 50% 50%, rgba(181, 18, 27, 0.22) 0%, rgba(10, 10, 10, 1) 75%);
+      border: 1px solid rgba(226, 27, 45, 0.3);
+      border-radius: var(--radius-lg);
+      padding: clamp(30px, 6vw, 60px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.95);
+    }
+    .booking-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    @media (max-width: 1024px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .categories-grid { grid-template-columns: repeat(2, 1fr); }
+      .bikes-grid { grid-template-columns: repeat(2, 1fr); }
+      .engineering-grid { grid-template-columns: repeat(2, 1fr); }
+      .benefits-grid { grid-template-columns: repeat(2, 1fr); }
+      .booking-grid { grid-template-columns: 1fr; }
+      .two-col-grid { grid-template-columns: 1fr; }
+    }
+    /* Tablet View Alone (768px to 1024px): 2*2 card sections */
+    @media (min-width: 768px) and (max-width: 1024px) {
+      .hero-grid { grid-template-columns: 1fr !important; }
+      .categories-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      .bikes-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      .engineering-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      .benefits-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      .hero-stats-row { grid-template-columns: 1fr !important; }
+      .two-col-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+      .heritage-img-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
+      .promo-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 20px !important; }
+      .promo-grid > div { padding: 24px 20px !important; }
+    }
+
+    /* Tab View in 768px and 1024px: In 3-card sections, keep 3rd card in center alignment */
+    @media (min-width: 768px) and (max-width: 1024px) {
+      .bikes-grid > :nth-child(3):last-child {
+        grid-column: 1 / -1 !important;
+        justify-self: center !important;
+        width: 100% !important;
+        max-width: calc((100% - 28px) / 2) !important;
+      }
+      .benefits-grid > :nth-child(3):last-child,
+      .engineering-grid > :nth-child(3):last-child {
+        grid-column: 1 / -1 !important;
+        justify-self: center !important;
+        width: 100% !important;
+        max-width: calc((100% - 24px) / 2) !important;
+      }
+      .promo-grid > :nth-child(3):last-child,
+      .categories-grid > :nth-child(3):last-child {
+        grid-column: 1 / -1 !important;
+        justify-self: center !important;
+        width: 100% !important;
+        max-width: calc((100% - 20px) / 2) !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      /* Footer Center Alignment for Mobile and 768px Tablet View */
+      .site-footer {
+        text-align: center !important;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr !important;
+        gap: 36px !important;
+        text-align: center !important;
+        justify-items: center !important;
+      }
+      .footer-col {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        width: 100% !important;
+      }
+      .site-footer .brand-logo {
+        justify-content: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+      .footer-col p {
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+      .footer-showroom-hours {
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+      .footer-social-links {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+      .footer-col h4 {
+        text-align: center !important;
+        width: 100% !important;
+      }
+      .footer-col h4::after {
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+      }
+      .footer-col ul {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
+      }
+      .footer-col ul li {
+        text-align: center !important;
+        width: 100% !important;
+      }
+      .footer-col ul li a {
+        text-align: center !important;
+        display: inline-block !important;
+      }
+      .footer-col ul li a:hover {
+        padding-left: 0 !important;
+        transform: translateY(-2px) !important;
+      }
+      .footer-bottom {
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 14px !important;
+        text-align: center !important;
+      }
+      .footer-bottom > div {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        text-align: center !important;
+        flex-wrap: wrap !important;
+        gap: 16px !important;
+      }
+
+      /* Mobile View Alone: Unified button box size, one-by-one vertical stacking, and center alignment */
+      .hero-cta-group,
+      .final-cta-group,
+      .promo-card-actions,
+      .bike-card-actions {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        gap: 14px !important;
+      }
+
+      /* Tab view in 768px: Center align hero heading, badge, and paragraph text */
+      .hero-grid > div:first-child {
+        text-align: center !important;
+      }
+      .hero-badge-strip {
+        justify-content: center !important;
+      }
+      .hero-headline {
+        text-align: center !important;
+      }
+      .hero-lead {
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+
+      .hero-cta-group {
+        margin-bottom: 38px !important;
+      }
+
+      .promo-card-actions {
+        margin-top: 24px !important;
+        gap: 12px !important;
+      }
+
+      .bike-card-actions {
+        margin-top: 16px !important;
+        gap: 10px !important;
+      }
+
+      .heritage-cta-wrap {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+        margin-top: 28px !important;
+      }
+
+      .section-header-flex {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 20px !important;
+        margin-bottom: 36px !important;
+      }
+
+      .section-header-flex > div {
+        text-align: center !important;
+      }
+
+      .section-header-flex .eyebrow {
+        justify-content: center !important;
+      }
+
+      /* Exact Same Box Size, Centering, and Symmetrical Touch-Friendly Padding for all Section Buttons */
+      .hero-cta-group .btn-red,
+      .hero-cta-group .btn-secondary,
+      .hero-cta-group .btn-outline-red,
+      .final-cta-group .btn-red,
+      .final-cta-group .btn-secondary,
+      .final-cta-group .btn-outline-red,
+      .promo-card-actions .btn-red,
+      .promo-card-actions .btn-secondary,
+      .promo-card-actions .btn-outline-red,
+      .bike-card-actions .btn-red,
+      .bike-card-actions .btn-secondary,
+      .bike-card-actions .btn-outline-red,
+      .heritage-cta-wrap .btn-secondary,
+      .heritage-cta-wrap .btn-red,
+      .section-header-flex > .btn-red,
+      .section-header-flex > .btn-secondary,
+      .category-card-body .btn-outline-red,
+      .bikes-grid .bike-card-body > .btn-red,
+      .bikes-grid .bike-card-body > .btn-outline-red,
+      .booking-section form .btn-red {
+        width: 100% !important;
+        max-width: 320px !important;
+        min-height: 50px !important;
+        height: 50px !important;
+        box-sizing: border-box !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        padding: 0 20px !important;
+        font-size: 0.95rem !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.02em !important;
+        line-height: 1.2 !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        flex: none !important;
+      }
+
+      .section-header-flex > .btn-red {
+        font-size: 0.88rem !important;
+        padding: 0 14px !important;
+      }
+    }
+    @media (max-width: 767px) {
+      .categories-grid { grid-template-columns: 1fr !important; }
+      .bikes-grid { grid-template-columns: 1fr !important; }
+      .engineering-grid { grid-template-columns: 1fr !important; }
+      .benefits-grid { grid-template-columns: 1fr !important; }
+      .hero-stats-row { grid-template-columns: 1fr !important; }
+      .promo-grid { grid-template-columns: 1fr !important; }
+      .two-col-grid { grid-template-columns: 1fr !important; }
+      .heritage-img-grid { grid-template-columns: 1fr !important; }
+      .bikes-grid > :nth-child(3):last-child,
+      .benefits-grid > :nth-child(3):last-child,
+      .engineering-grid > :nth-child(3):last-child,
+      .promo-grid > :nth-child(3):last-child,
+      .categories-grid > :nth-child(3):last-child {
+        grid-column: auto !important;
+        justify-self: stretch !important;
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SITE HEADER -->
+  <header class="site-header">
+    <div class="site-container header-inner">
+      <a href="index.html" class="brand-logo">
+        <span class="brand-badge"><img src="images/website-logo.png" alt="Motorcycles Logo" class="brand-logo-img"></span>
+        <span>MOTORCYCLES</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link active">Home</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li><a href="collection.html" class="nav-link">Motorcycle Collection</a></li>
+          <li><a href="accessories.html" class="nav-link">Accessories & Gear</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button id="cartToggle" class="cart-btn" aria-label="View Shopping Cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+          <span id="cartBadge" class="cart-badge">0</span>
+        </button>
+        <button onclick="openVehicleSaleOrderModal()" class="btn-red nav-sale-order-btn" aria-label="Open Vehicle Sale Order">Vehicle Sale Order</button>
+        <button id="mobileMenuToggle" class="mobile-toggle" aria-label="Open Mobile Menu">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE DRAWER -->
+  <div id="drawerOverlay" class="drawer-overlay"></div>
+  <aside id="mobileDrawer" class="mobile-drawer">
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px;">
+      <div class="brand-logo" style="font-size: 1.05rem;">
+        <span class="brand-badge"><img src="images/website-logo.png" alt="Motorcycles Logo" class="brand-logo-img"></span>
+        <span>MOTORCYCLES</span>
+      </div>
+      <button id="closeMobileDrawer" style="background: none; border: none; color: #fff; cursor: pointer;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+    <ul style="list-style: none; display: flex; flex-direction: column; gap: 18px; margin-bottom: 30px;">
+      <li><a href="index.html" class="nav-link active" style="font-size: 1.1rem;">Home</a></li>
+      <li><a href="about.html" class="nav-link" style="font-size: 1.1rem;">About</a></li>
+      <li><a href="services.html" class="nav-link" style="font-size: 1.1rem;">Services</a></li>
+      <li><a href="collection.html" class="nav-link" style="font-size: 1.1rem;">Motorcycle Collection</a></li>
+      <li><a href="accessories.html" class="nav-link" style="font-size: 1.1rem;">Accessories & Gear</a></li>
+      <li><a href="contact.html" class="nav-link" style="font-size: 1.1rem;">Contact</a></li>
+      <li>
+        <button class="mobile-drawer-cart-btn" onclick="openCart(); document.getElementById('mobileDrawer')?.classList.remove('open'); document.getElementById('drawerOverlay')?.classList.remove('active'); document.body.style.overflow='';" aria-label="Open Shopping Bag">
+          <span class="mobile-cart-icon-wrap">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+            <span id="cartBadgeMobile" class="cart-badge-mobile">0</span>
+          </span>
+          <span>Shopping Cart</span>
+        </button>
+      </li>
+    </ul>
+    <button onclick="openVehicleSaleOrderModal(); document.getElementById('mobileDrawer')?.classList.remove('open'); document.getElementById('drawerOverlay')?.classList.remove('active'); document.body.style.overflow='';" class="btn-red" style="width: 100%; border: none; cursor: pointer; font-weight: 700;">Vehicle Sale Order</button>
+  </aside>
+
+  <!-- CART DRAWER -->
+  <div id="cartDrawer" class="cart-drawer">
+    <div class="cart-drawer-header">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-red)" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+        <h3 class="font-heading" style="font-size: 1.25rem;">Shopping Bag</h3>
+      </div>
+      <button id="closeCartDrawer" style="background: none; border: none; color: #fff; cursor: pointer;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+    <div id="cartItemsList" class="cart-drawer-body">
+      <!-- Items dynamically injected -->
+    </div>
+    <div id="cartEmptyState" style="padding: 40px 20px; text-align: center; color: var(--metallic-grey);">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin: 0 auto 16px;"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+      <p>Your shopping bag is currently empty.</p>
+    </div>
+    <div class="cart-drawer-footer">
+      <div style="display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 0.95rem; color: var(--light-grey);">
+        <span>Subtotal:</span>
+        <span id="cartSubtotalAmount" style="font-weight: 700; color: #fff;">₹0</span>
+      </div>
+      <div style="display: flex; justify-content: space-between; margin-bottom: 20px; font-size: 1.15rem; font-weight: 800; color: var(--accent-red);">
+        <span>Total:</span>
+        <span id="cartTotalAmount">₹0</span>
+      </div>
+      <a href="accessories.html" class="btn-red" style="width: 100%;">Proceed to Order Form</a>
+    </div>
+  </div>
+
+  <main>
+    <!-- SECTION 1: CINEMATIC 3D HERO -->
+    <section class="hero-section">
+      <div class="site-container">
+        <div class="hero-grid">
+          <div>
+            <div class="hero-badge-strip">
+              <span class="hero-badge-pill">ENGINEERED FOR THE EXTRAORDINARY</span>
+            </div>
+            <h1 class="hero-headline font-heading">
+              Unleash Your <span class="red-glow-text">Next Ride.</span>
+            </h1>
+            <p class="hero-lead">
+              Discover performance motorcycles, legendary road machines, and premium riding gear designed for riders who demand more from every journey.
+            </p>
+            <div class="hero-cta-group">
+              <a href="collection.html" class="btn-red">Explore Motorcycles</a>
+              <a href="accessories.html" class="btn-secondary">Shop Accessories</a>
+              <a href="#testRideSection" class="btn-outline-red">Book a Test Ride</a>
+            </div>
+            <div class="hero-stats-row">
+              <div>
+                <div class="stat-number">22+</div>
+                <div class="stat-label">In-Stock Superbikes</div>
+              </div>
+              <div>
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Dealership Verified</div>
+              </div>
+              <div>
+                <div class="stat-number">300+</div>
+                <div class="stat-label">Km/h Performance Spec</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual-stage">
+            <div class="hero-visual-frame" data-tilt>
+              <!-- IMAGE 2: Ducati Panigale V4 S Rosso Corsa -->
+              <img src="images/image-2.png" alt="Ducati Panigale V4 S Rosso Corsa" class="hero-main-img">
+              <div class="hero-floating-spec">
+                <div style="background: var(--accent-red); width: 8px; height: 38px; border-radius: 4px;"></div>
+                <div>
+                  <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--metallic-grey); letter-spacing: 0.08em;">Flagship Superbike</div>
+                  <div style="font-weight: 800; font-family: var(--font-heading); color: #fff; font-size: 1.05rem;">Ducati Panigale V4 S</div>
+                </div>
+                <div style="margin-left: 12px; font-weight: 700; color: var(--accent-red); font-size: 1.1rem;">214 HP</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: MOTORCYCLE CATEGORIES -->
+    <section class="section-spacer" style="background: var(--charcoal-black);">
+      <div class="site-container">
+        <div style="text-align: center; max-width: 700px; margin: 0 auto 50px;">
+          <div class="eyebrow">DISTINCT DISCIPLINES</div>
+          <h2 class="section-title">Explore Motorcycle Categories</h2>
+          <p class="section-desc" style="margin: 0 auto;">Engineered for track records, transcontinental highways, and urban dominance.</p>
+        </div>
+
+        <div class="categories-grid">
+          <!-- Card 1: Sport Bikes (Image 5: Ducati 899 Panigale) -->
+          <div class="category-card" data-tilt>
+            <img src="images/image-5.png" alt="Sport Bikes - Ducati 899 Panigale Supersport" class="category-card-img">
+            <div class="category-card-body">
+              <span class="category-card-count">8 Models Available</span>
+              <h3 class="category-card-title">Sport Bikes</h3>
+              <p class="category-card-desc">Aerodynamic track weapons like the Ducati 899 Panigale, featuring high-revving Superquadro engines and race-bred monocoque chassis.</p>
+              <a href="collection.html?category=Sport%20Bikes" class="btn-outline-red" style="width: fit-content;">Explore Category &rarr;</a>
+            </div>
+          </div>
+
+          <!-- Card 2: Naked Street Bikes (Image 3: MV Agusta Brutale 1000 RR) -->
+          <div class="category-card" data-tilt>
+            <img src="images/image-3.png" alt="Naked Street Bikes - MV Agusta Brutale 1000 RR" class="category-card-img">
+            <div class="category-card-body">
+              <span class="category-card-count">5 Models Available</span>
+              <h3 class="category-card-title">Naked Street Bikes</h3>
+              <p class="category-card-desc">Aggressive roadster ergonomics like the MV Agusta Brutale, delivering explosive torque, exposed chassis mechanical art, and instantaneous throttle punch.</p>
+              <a href="collection.html?category=Naked%20Street%20Bikes" class="btn-outline-red" style="width: fit-content;">Explore Category &rarr;</a>
+            </div>
+          </div>
+
+          <!-- Card 3: Adventure Touring (Image 4: KTM 1290 Super Adventure S) -->
+          <div class="category-card" data-tilt>
+            <img src="images/image-4.png" alt="Adventure Touring - KTM 1290 Super Adventure S" class="category-card-img">
+            <div class="category-card-body">
+              <span class="category-card-count">4 Models Available</span>
+              <h3 class="category-card-title">Adventure Touring</h3>
+              <p class="category-card-desc">Unstoppable globe-trotters like the KTM 1290 Super Adventure S, engineered with WP semi-active suspension, massive fuel autonomy, and all-terrain traction mapping.</p>
+              <a href="collection.html?category=Adventure%20Touring" class="btn-outline-red" style="width: fit-content;">Explore Category &rarr;</a>
+            </div>
+          </div>
+
+          <!-- Card 4: Flagship Superbikes (Image 10: Yamaha YZF-R1 Icon Blue at Sunset) -->
+          <div class="category-card" data-tilt>
+            <img src="images/image-10.png" alt="Flagship Superbikes - Yamaha YZF-R1 Icon Blue" class="category-card-img">
+            <div class="category-card-body">
+              <span class="category-card-count">Yamaha R-Series</span>
+              <h3 class="category-card-title">Flagship Superbikes</h3>
+              <p class="category-card-desc">World-renowned litre-class superbikes like the Yamaha YZF-R1 Icon Blue, featuring crossplane CP4 engines and lean-angle electronic rider aids.</p>
+              <a href="collection.html?category=Sport%20Bikes" class="btn-outline-red" style="width: fit-content;">Explore Category &rarr;</a>
+            </div>
+          </div>
+
+          <!-- Card 5: Competition Superbikes (Image 13: Suzuki GSX-R1000 Black Edition) -->
+          <div class="category-card" data-tilt>
+            <img src="images/image-13.png" alt="Competition Superbikes - Suzuki GSX-R1000 Black Edition" class="category-card-img">
+            <div class="category-card-body">
+              <span class="category-card-count">Suzuki GSX Series</span>
+              <h3 class="category-card-title">Competition Superbikes</h3>
+              <p class="category-card-desc">Legendary championship pedigree represented by the Suzuki GSX-R1000, combining Variable Valve Timing (SR-VVT) with track-focused chassis balance.</p>
+              <a href="collection.html?category=Sport%20Bikes" class="btn-outline-red" style="width: fit-content;">Explore Category &rarr;</a>
+            </div>
+          </div>
+
+          <!-- Card 6: Pre-Owned Superbikes (Image 14: BMW S1000RR Sky Blue) -->
+          <div class="category-card" data-tilt>
+            <img src="images/image-14.png" alt="Certified Pre-Owned - BMW S1000RR Sky Blue" class="category-card-img">
+            <div class="category-card-body">
+              <span class="category-card-count">7 Models Available</span>
+              <h3 class="category-card-title">Pre-Owned Superbikes</h3>
+              <p class="category-card-desc">120-point inspected, low-mileage verified superbikes like this BMW S1000RR Sky Blue edition, backed by full dealership history and mechanical warranty.</p>
+              <a href="collection.html?condition=Pre-Owned" class="btn-outline-red" style="width: fit-content;">Explore Category &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: FEATURED MOTORCYCLES (Images 1, 6, 7, 8, 9, 11) -->
+    <section class="section-spacer">
+      <div class="site-container">
+        <div class="section-header-flex" style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 45px; flex-wrap: wrap; gap: 20px;">
+          <div>
+            <div class="eyebrow">CURATED SHOWROOM INVENTORY</div>
+            <h2 class="section-title">Featured Superbikes</h2>
+          </div>
+          <a href="collection.html" class="btn-red">View Complete Collection (22 Bikes) &rarr;</a>
+        </div>
+
+        <div class="bikes-grid">
+          <!-- Featured 1: Honda CBR1000RR-R Fireblade SP (Image 1) -->
+          <div class="bike-card" data-tilt>
+            <div class="bike-img-wrap">
+              <img src="images/image-1.png" alt="Honda CBR1000RR-R Fireblade SP Stealth Black" class="bike-card-img">
+              <span class="bike-condition-tag new">New 2024</span>
+            </div>
+            <div class="bike-card-body">
+              <div class="bike-card-price">₹23,72,000</div>
+              <h3 class="bike-card-name">Honda CBR1000RR-R Fireblade SP Stealth</h3>
+              <div class="bike-specs-pills">
+                <span class="bike-spec-pill">999 cc Inline-4</span>
+                <span class="bike-spec-pill">214 HP</span>
+                <span class="bike-spec-pill">Öhlins Smart-EC</span>
+                <span class="bike-spec-pill">Brembo Stylema</span>
+              </div>
+              <div class="bike-card-actions">
+                <a href="collection.html" class="btn-secondary" style="flex: 1; padding: 10px; font-size: 0.88rem;">View Details</a>
+                <button onclick="openMotorcycleOrderModal(1)" class="btn-red" style="flex: 1; padding: 10px; font-size: 0.88rem;">Reserve Now</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Featured 2: Kawasaki Ninja ZX-6R Metallic Blue (Image 6) -->
+          <div class="bike-card" data-tilt>
+            <div class="bike-img-wrap">
+              <img src="images/image-6.png" alt="Kawasaki Ninja ZX-6R Metallic Blue Supersport" class="bike-card-img">
+              <span class="bike-condition-tag new">New 2024</span>
+            </div>
+            <div class="bike-card-body">
+              <div class="bike-card-price">₹11,20,000</div>
+              <h3 class="bike-card-name">Kawasaki Ninja ZX-6R Metallic Blue</h3>
+              <div class="bike-specs-pills">
+                <span class="bike-spec-pill">636 cc Inline-4</span>
+                <span class="bike-spec-pill">130 HP</span>
+                <span class="bike-spec-pill">Showa SFF-BP</span>
+                <span class="bike-spec-pill">KRT Traction</span>
+              </div>
+              <div class="bike-card-actions">
+                <a href="collection.html" class="btn-secondary" style="flex: 1; padding: 10px; font-size: 0.88rem;">View Details</a>
+                <button onclick="openMotorcycleOrderModal(1)" class="btn-red" style="flex: 1; padding: 10px; font-size: 0.88rem;">Reserve Now</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Featured 3: MV Agusta F4 1000 RR Italian Exotica (Image 7) -->
+          <div class="bike-card" data-tilt>
+            <div class="bike-img-wrap">
+              <img src="images/image-7.png" alt="MV Agusta F4 1000 RR Italian Exotica" class="bike-card-img">
+              <span class="bike-condition-tag new">New 2024</span>
+            </div>
+            <div class="bike-card-body">
+              <div class="bike-card-price">₹28,50,000</div>
+              <h3 class="bike-card-name">MV Agusta F4 1000 RR Italian Exotica</h3>
+              <div class="bike-specs-pills">
+                <span class="bike-spec-pill">998 cc 16-Valve</span>
+                <span class="bike-spec-pill">201 HP</span>
+                <span class="bike-spec-pill">4 Organ Pipes</span>
+                <span class="bike-spec-pill">Öhlins NIX30</span>
+              </div>
+              <div class="bike-card-actions">
+                <a href="collection.html" class="btn-secondary" style="flex: 1; padding: 10px; font-size: 0.88rem;">View Details</a>
+                <button onclick="openMotorcycleOrderModal(1)" class="btn-red" style="flex: 1; padding: 10px; font-size: 0.88rem;">Reserve Now</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Featured 4: BMW S1000RR M Package Carbon (Image 8) -->
+          <div class="bike-card" data-tilt>
+            <div class="bike-img-wrap">
+              <img src="images/image-8.png" alt="BMW S1000RR M Motorsport Tricolour" class="bike-card-img">
+              <span class="bike-condition-tag new">New 2024</span>
+            </div>
+            <div class="bike-card-body">
+              <div class="bike-card-price">₹24,95,000</div>
+              <h3 class="bike-card-name">BMW S1000RR M Motorsport Tricolour</h3>
+              <div class="bike-specs-pills">
+                <span class="bike-spec-pill">999 cc ShiftCam</span>
+                <span class="bike-spec-pill">210 HP</span>
+                <span class="bike-spec-pill">M Carbon Wheels</span>
+                <span class="bike-spec-pill">Slide Control</span>
+              </div>
+              <div class="bike-card-actions">
+                <a href="collection.html" class="btn-secondary" style="flex: 1; padding: 10px; font-size: 0.88rem;">View Details</a>
+                <button onclick="openMotorcycleOrderModal(1)" class="btn-red" style="flex: 1; padding: 10px; font-size: 0.88rem;">Reserve Now</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Featured 5: Ducati Panigale V4 S Rosso Corsa (Image 9) -->
+          <div class="bike-card" data-tilt>
+            <div class="bike-img-wrap">
+              <img src="images/image-9.png" alt="Ducati Panigale V4 S Rosso Corsa" class="bike-card-img">
+              <span class="bike-condition-tag new">New 2024</span>
+            </div>
+            <div class="bike-card-body">
+              <div class="bike-card-price">₹27,45,000</div>
+              <h3 class="bike-card-name">Ducati Panigale V4 S Rosso Corsa</h3>
+              <div class="bike-specs-pills">
+                <span class="bike-spec-pill">1,103 cc V4</span>
+                <span class="bike-spec-pill">214 HP</span>
+                <span class="bike-spec-pill">Öhlins Smart EC</span>
+                <span class="bike-spec-pill">Stylema Calipers</span>
+              </div>
+              <div class="bike-card-actions">
+                <a href="collection.html" class="btn-secondary" style="flex: 1; padding: 10px; font-size: 0.88rem;">View Details</a>
+                <button onclick="openMotorcycleOrderModal(1)" class="btn-red" style="flex: 1; padding: 10px; font-size: 0.88rem;">Reserve Now</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Featured 6: Yamaha YZF-R9 Next-Gen Supersport (Image 11) -->
+          <div class="bike-card" data-tilt>
+            <div class="bike-img-wrap">
+              <img src="images/image-11.png" alt="Yamaha YZF-R9 Next-Gen Supersport" class="bike-card-img">
+              <span class="bike-condition-tag new">New 2025</span>
+            </div>
+            <div class="bike-card-body">
+              <div class="bike-card-price">₹15,80,000</div>
+              <h3 class="bike-card-name">Yamaha YZF-R9 Next-Gen Supersport</h3>
+              <div class="bike-specs-pills">
+                <span class="bike-spec-pill">890 cc CP3</span>
+                <span class="bike-spec-pill">119 HP</span>
+                <span class="bike-spec-pill">Deltabox Frame</span>
+                <span class="bike-spec-pill">Brembo Stylema</span>
+              </div>
+              <div class="bike-card-actions">
+                <a href="collection.html" class="btn-secondary" style="flex: 1; padding: 10px; font-size: 0.88rem;">View Details</a>
+                <button onclick="openMotorcycleOrderModal(1)" class="btn-red" style="flex: 1; padding: 10px; font-size: 0.88rem;">Reserve Now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: PERFORMANCE AND ENGINEERING (Images 15, 16, 17, 18, 19, 20) -->
+    <section class="section-spacer" style="background: var(--charcoal-black);">
+      <div class="site-container">
+        <div style="text-align: center; max-width: 720px; margin: 0 auto 50px;">
+          <div class="eyebrow">PRECISION TRACK HARDWARE</div>
+          <h2 class="section-title">Performance & Engineering</h2>
+          <p class="section-desc" style="margin: 0 auto;">Each machine in our collection showcases apex engineering and racing-proven design.</p>
+        </div>
+
+        <div class="engineering-grid">
+          <!-- Item 1: KTM RC 8C Track Prototype (Image 15) -->
+          <div class="engineering-item" data-tilt>
+            <img src="images/image-15.png" alt="KTM RC 8C Track Prototype Race Bike" class="engineering-img">
+            <div class="engineering-body">
+              <h4 style="font-family: var(--font-heading); font-size: 1.15rem; margin-bottom: 8px;">KTM RC 8C Track Weapon</h4>
+              <p style="color: var(--text-dim); font-size: 0.88rem; line-height: 1.6;">Dedicated closed-circuit prototype featuring lightweight tubular trellis chassis, Dymag forged wheels, and race-spec aerodynamic fairings.</p>
+            </div>
+          </div>
+
+          <!-- Item 2: BMW F900R Triple Black Roadster (Image 16) -->
+          <div class="engineering-item" data-tilt>
+            <img src="images/image-16.png" alt="BMW F900R Triple Black Dynamic Roadster" class="engineering-img">
+            <div class="engineering-body">
+              <h4 style="font-family: var(--font-heading); font-size: 1.15rem; margin-bottom: 8px;">BMW F900R Triple Black</h4>
+              <p style="color: var(--text-dim); font-size: 0.88rem; line-height: 1.6;">Aggressive muscular roadster architecture powered by an 895cc parallel-twin engine, USD front forks, and sleek Triple Black styling.</p>
+            </div>
+          </div>
+
+          <!-- Item 3: KTM Duke with Akrapovic Exhaust (Image 17) -->
+          <div class="engineering-item" data-tilt>
+            <img src="images/image-17.png" alt="KTM Duke Naked with Akrapovic Exhaust" class="engineering-img">
+            <div class="engineering-body">
+              <h4 style="font-family: var(--font-heading); font-size: 1.15rem; margin-bottom: 8px;">Akrapovic Titanium Tuning</h4>
+              <p style="color: var(--text-dim); font-size: 0.88rem; line-height: 1.6;">High-flow titanium Akrapovic exhaust canister paired with high-torque parallel twins for optimized backpressure and aggressive acoustics.</p>
+            </div>
+          </div>
+
+          <!-- Item 4: KTM 1390 Super Duke R Hypernaked (Image 18) -->
+          <div class="engineering-item" data-tilt>
+            <img src="images/image-18.png" alt="KTM 1390 Super Duke R Hypernaked" class="engineering-img">
+            <div class="engineering-body">
+              <h4 style="font-family: var(--font-heading); font-size: 1.15rem; margin-bottom: 8px;">KTM Super Duke R "The Beast"</h4>
+              <p style="color: var(--text-dim); font-size: 0.88rem; line-height: 1.6;">Predatory split-LED headlight, massive 1,350cc LC8 V-twin torque, aerodynamic winglets, and signature chrome-moly trellis frame.</p>
+            </div>
+          </div>
+
+          <!-- Item 5: Yamaha MT-07 Cyan Storm (Image 19) -->
+          <div class="engineering-item" data-tilt>
+            <img src="images/image-19.png" alt="Yamaha MT-07 Cyan Storm Roadster" class="engineering-img">
+            <div class="engineering-body">
+              <h4 style="font-family: var(--font-heading); font-size: 1.15rem; margin-bottom: 8px;">Yamaha MT-07 Cyan Storm</h4>
+              <p style="color: var(--text-dim); font-size: 0.88rem; line-height: 1.6;">Torque-rich CP2 270-degree crossplane engine paired with vibrant Cyan Storm contrast alloy wheels and ultra-nimble urban agility.</p>
+            </div>
+          </div>
+
+          <!-- Item 6: Triumph Street Triple 765 RS (Image 20) -->
+          <div class="engineering-item" data-tilt>
+            <img src="images/image-20.png" alt="Triumph Street Triple 765 RS Roadster" class="engineering-img">
+            <div class="engineering-body">
+              <h4 style="font-family: var(--font-heading); font-size: 1.15rem; margin-bottom: 8px;">Triumph Street Triple 765 RS</h4>
+              <p style="color: var(--text-dim); font-size: 0.88rem; line-height: 1.6;">Moto2-derived 765cc triple engine delivering a spine-tingling acoustic howl, iconic twin bug-eye LED headlights, and Brembo track braking.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: ACCESSORIES AND RIDING GEAR PREVIEW -->
+    <section class="section-spacer">
+      <div class="site-container">
+        <div class="section-header-flex" style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 45px; flex-wrap: wrap; gap: 20px;">
+          <div>
+            <div class="eyebrow">RIDER PROTECTION & PERFORMANCE</div>
+            <h2 class="section-title">Special Editions & Packages</h2>
+          </div>
+          <a href="accessories.html" class="btn-red">Shop All Specialized Items &rarr;</a>
+        </div>
+
+        <div class="bikes-grid">
+          <!-- Gear Preview 1 (Image 12: Yamaha YZF-R1 Raven Dark Edition) -->
+          <div class="bike-card" data-tilt>
+            <div class="bike-img-wrap">
+              <img src="images/image-12.png" alt="Yamaha YZF-R1 Raven Dark Edition Superbike" class="bike-card-img">
+              <span class="bike-condition-tag new">Race Package</span>
+            </div>
+            <div class="bike-card-body">
+              <div class="bike-card-price">₹21,50,000</div>
+              <h3 class="bike-card-name">Yamaha YZF-R1 Raven Dark Edition</h3>
+              <p style="color: var(--text-dim); font-size: 0.88rem; margin-bottom: 16px;">Flagship CP4 crossplane track edition featuring stealth matte black bodywork and race electronics package.</p>
+              <button onclick="openMotorcycleOrderModal(1)" class="btn-red" style="width: 100%;">Reserve Special Edition</button>
+            </div>
+          </div>
+
+          <!-- Gear Preview 2: Kawasaki Vulcan 900 Cruiser (Image 27) -->
+          <div class="bike-card" data-tilt>
+            <div class="bike-img-wrap">
+              <img src="images/image-27.png" alt="Kawasaki Vulcan 900 Classic Chrome Cruiser" class="bike-card-img">
+              <span class="bike-condition-tag new">Cruiser Special</span>
+            </div>
+            <div class="bike-card-body">
+              <div class="bike-card-price">₹10,49,000</div>
+              <h3 class="bike-card-name">Kawasaki Vulcan 900 Classic Chrome</h3>
+              <p style="color: var(--text-dim); font-size: 0.88rem; margin-bottom: 16px;">Classic metric cruiser featuring slash-cut chrome pipes, spoked wheels, and deep floorboards for effortless open-road touring.</p>
+              <button onclick="openMotorcycleOrderModal(1)" class="btn-outline-red" style="width: 100%; text-align: center;">View Cruiser Details</button>
+            </div>
+          </div>
+
+          <!-- Gear Preview 3: BSA Gold Star Classic (Image 28) -->
+          <div class="bike-card" data-tilt>
+            <div class="bike-img-wrap">
+              <img src="images/image-28.png" alt="BSA Gold Star 650 British Heritage Classic" class="bike-card-img">
+              <span class="bike-condition-tag new">Heritage Icon</span>
+            </div>
+            <div class="bike-card-body">
+              <div class="bike-card-price">₹3,49,000</div>
+              <h3 class="bike-card-name">BSA Gold Star 650 British Heritage</h3>
+              <p style="color: var(--text-dim); font-size: 0.88rem; margin-bottom: 16px;">Legendary British single-cylinder roadster with chrome teardrop tank, red BSA star emblem, and vintage spoked wheels.</p>
+              <button onclick="openMotorcycleOrderModal(1)" class="btn-red" style="width: 100%;">Reserve Heritage Bike</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: WHY CHOOSE US (Images 21, 22, 23) -->
+    <section class="section-spacer" style="background: var(--charcoal-black);">
+      <div class="site-container">
+        <div style="text-align: center; max-width: 720px; margin: 0 auto 50px;">
+          <div class="eyebrow">UNCOMPROMISING STANDARDS</div>
+          <h2 class="section-title">Why Motorcyclists Trust Us</h2>
+          <p class="section-desc" style="margin: 0 auto;">Every vehicle in our showroom undergoes rigorous inspection and preparation by certified superbike technicians.</p>
+        </div>
+
+        <div class="benefits-grid">
+          <!-- Benefit 1 (Image 21) -->
+          <div class="benefit-card" data-tilt>
+            <img src="images/image-21.png" alt="Ducati Trellis Frame Roadster with Dual High-Mount Exhausts" class="benefit-card-img">
+            <div class="benefit-card-body">
+              <h4 style="font-family: var(--font-heading); font-size: 1.15rem; margin-bottom: 8px;">Handcrafted Trellis Engineering</h4>
+              <p style="color: var(--text-dim); font-size: 0.88rem; line-height: 1.6;">Precision-welded steel trellis architecture paired with dual high-mounted performance silencers, engineered for uncompromising rigidity and aggressive urban street carving.</p>
+            </div>
+          </div>
+
+          <!-- Benefit 2 (Image 22) -->
+          <div class="benefit-card" data-tilt>
+            <img src="images/image-22.png" alt="KTM 1390 Super Duke R Hypernaked on Polished Wooden Showroom Floor" class="benefit-card-img">
+            <div class="benefit-card-body">
+              <h4 style="font-family: var(--font-heading); font-size: 1.15rem; margin-bottom: 8px;">Pristine Showroom Presentation</h4>
+              <p style="color: var(--text-dim); font-size: 0.88rem; line-height: 1.6;">Flagship hypernakeds like the KTM 1390 Super Duke R are meticulously prepped and displayed on our climate-controlled hardwood floor, calibrated and ready for delivery.</p>
+            </div>
+          </div>
+
+          <!-- Benefit 3 (Image 23) -->
+          <div class="benefit-card" data-tilt>
+            <img src="images/image-23.png" alt="Yamaha MT-07 Touring Edition with Fluorescent Wheels and Luggage" class="benefit-card-img">
+            <div class="benefit-card-body">
+              <h4 style="font-family: var(--font-heading); font-size: 1.15rem; margin-bottom: 8px;">Tour-Ready Performance Outfitting</h4>
+              <p style="color: var(--text-dim); font-size: 0.88rem; line-height: 1.6;">From vibrant fluorescent wheels to aerodynamic soft touring luggage and magnetic tank bags, our roadsters arrive fully equipped for both weekend twisties and cross-country expeditions.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: TEST-RIDE BOOKING (Image 24) -->
+    <section id="testRideSection" class="section-spacer">
+      <div class="site-container">
+        <div class="booking-section">
+          <div class="booking-grid">
+            <div>
+              <div class="eyebrow">CUSTOM BOXER BOBBER EXPERIENCE</div>
+              <h2 class="section-title" style="font-size: clamp(2rem, 3.5vw, 2.8rem);">Experience The Big Boxer In Action</h2>
+              <p style="color: var(--light-grey); line-height: 1.7; margin-bottom: 24px;">
+                Request an exclusive test ride on custom cruisers like the BMW R18 Bobber — powered by the monumental 1800cc Big Boxer twin, tall ape-hanger handlebars, and handcrafted teardrop bodywork.
+              </p>
+              <!-- IMAGE 24: BMW R18 Custom Cruiser -->
+              <div style="border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--surface-border); box-shadow: 0 10px 30px rgba(0,0,0,0.8);">
+                <img src="images/image-24.png" alt="BMW R18 Custom Cruiser with 1800cc Big Boxer and Ape-Hanger Handlebars" style="width: 100%; height: 260px; object-fit: cover;">
+                <div style="padding: 10px 16px; background: var(--dark-surface); font-size: 0.82rem; color: var(--text-dim); display: flex; justify-content: space-between;">
+                  <span style="font-weight: 700; color: #fff;">BMW R18 Custom Ape-Hanger Bobber</span>
+                  <span style="color: var(--accent-red);">1,802cc Big Boxer</span>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <form id="homeTestRideForm" style="background: rgba(10, 10, 10, 0.95); padding: 32px; border-radius: var(--radius-md); border: 1px solid var(--surface-border);">
+                <h3 class="font-heading" style="font-size: 1.35rem; margin-bottom: 20px; color: #fff;">Book Your Test Ride</h3>
+                <div id="testRideFeedback" class="alert-feedback"></div>
+
+                <div class="form-grid-2">
+                  <div class="form-group">
+                    <label class="form-label">Full Name *</label>
+                    <input type="text" name="fullName" class="form-control" required placeholder="John Doe">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Mobile Number *</label>
+                    <input type="tel" name="mobile" class="form-control" required placeholder="+91 98765 43210" pattern="[0-9+ ]{10,15}">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Email Address *</label>
+                  <input type="email" name="email" class="form-control" required placeholder="rider@domain.com">
+                </div>
+
+                <div class="form-grid-2">
+                  <div class="form-group">
+                    <label class="form-label">Preferred Motorcycle *</label>
+                    <select name="motorcycle" class="form-control form-select" required>
+                      <option value="">Select Motorcycle</option>
+                      <option value="BMW R18 Custom Bobber">BMW R18 Custom Bobber (1800cc)</option>
+                      <option value="Ducati Panigale V4 S">Ducati Panigale V4 S</option>
+                      <option value="Honda CBR1000RR-R Fireblade">Honda CBR1000RR-R Fireblade</option>
+                      <option value="BMW S1000RR M Package">BMW S1000RR M Package</option>
+                      <option value="Kawasaki Ninja ZX-6R">Kawasaki Ninja ZX-6R</option>
+                      <option value="Yamaha MT-07 Roadster">Yamaha MT-07 Roadster</option>
+                      <option value="KTM 1390 Super Duke R">KTM 1390 Super Duke R</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Dealership Location *</label>
+                    <select name="dealership" class="form-control form-select" required>
+                      <option value="Bangalore Apex Experience Centre">Bangalore Apex Experience Centre</option>
+                      <option value="Mumbai High-Performance Pavilion">Mumbai High-Performance Pavilion</option>
+                      <option value="Delhi NCR Circuit Hub">Delhi NCR Circuit Hub</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-grid-2">
+                  <div class="form-group">
+                    <label class="form-label">Preferred Date *</label>
+                    <input type="date" name="preferredDate" id="testRideDateInput" class="form-control" required>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Preferred Time Slot *</label>
+                    <select name="timeSlot" class="form-control form-select" required>
+                      <option value="10:00 AM - 12:00 PM">10:00 AM - 12:00 PM</option>
+                      <option value="02:00 PM - 04:00 PM">02:00 PM - 04:00 PM</option>
+                      <option value="04:30 PM - 06:30 PM">04:30 PM - 06:30 PM</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Riding Experience</label>
+                  <select name="experience" class="form-control form-select">
+                    <option value="3+ Years (Big Bike / Superbike Rider)">3+ Years (Big Bike / Superbike Rider)</option>
+                    <option value="1-3 Years (Intermediate / Upgrading)">1-3 Years (Intermediate / Upgrading)</option>
+                    <option value="Track Day Certified Rider">Track Day Certified Rider</option>
+                  </select>
+                </div>
+
+                <button type="submit" class="btn-red" style="width: 100%; margin-top: 10px;">Request a Test Ride</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 8: CUSTOMER EXPERIENCE AND TRUST (Images 25, 26) -->
+    <section class="section-spacer" style="background: var(--charcoal-black);">
+      <div class="site-container">
+        <div class="two-col-grid">
+          <div>
+            <div class="eyebrow">THE APEX HERITAGE & CRAFTSMANSHIP</div>
+            <h2 class="section-title">Vintage Legends & Custom V-Twin Artistry</h2>
+            <p class="section-desc" style="margin-bottom: 24px;">
+              From golden-era transverse four-cylinder icons to bespoke American and European V-twin cruisers, our master artisans deliver museum-grade restorations, performance exhausts, and VIP client handovers.
+            </p>
+            <div style="display: flex; flex-direction: column; gap: 14px; margin-bottom: 30px;">
+              <div style="display: flex; gap: 12px; align-items: flex-start;">
+                <span style="color: var(--accent-red); font-size: 1.2rem;">✔</span>
+                <span style="color: var(--light-grey);">Historic classic restorations including transverse four-cylinder legends like the Honda CB750 Four.</span>
+              </div>
+              <div style="display: flex; gap: 12px; align-items: flex-start;">
+                <span style="color: var(--accent-red); font-size: 1.2rem;">✔</span>
+                <span style="color: var(--light-grey);">Bespoke chrome V-twin engine tuning, dual slash-cut exhaust pipes, and hand-finished detailing.</span>
+              </div>
+              <div style="display: flex; gap: 12px; align-items: flex-start;">
+                <span style="color: var(--accent-red); font-size: 1.2rem;">✔</span>
+                <span style="color: var(--light-grey);">Private VIP unveiling ceremonies with dyno health certificates and certified mechanical provenance.</span>
+              </div>
+            </div>
+            <div class="heritage-cta-wrap" style="margin-top: 36px;">
+              <a href="about.html" class="btn-secondary">Discover Our Heritage &rarr;</a>
+            </div>
+          </div>
+
+          <div class="heritage-img-grid">
+            <!-- IMAGE 25: Classic Honda CB750 Four -->
+            <div style="border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--surface-border);" data-tilt>
+              <img src="images/image-25.png" alt="Classic Honda CB750 Four Vintage Transverse Inline-Four Motorcycle" style="width: 100%; height: 280px; object-fit: cover;">
+              <div style="padding: 12px; background: var(--dark-surface); font-size: 0.85rem; font-weight: 600;">Honda CB750 Four Classic</div>
+            </div>
+            <!-- IMAGE 26: Custom Chrome Cruiser V-Twin Engine -->
+            <div style="border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--surface-border); margin-top: 30px;" data-tilt>
+              <img src="images/image-26.png" alt="Custom Chrome Cruiser V-Twin Engine and Slash-Cut Drag Pipes" style="width: 100%; height: 280px; object-fit: cover;">
+              <div style="padding: 12px; background: var(--dark-surface); font-size: 0.85rem; font-weight: 600;">Custom Chrome V-Twin Detail</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 9: LATEST OFFERS AND PROMOTIONS -->
+    <section class="section-spacer">
+      <div class="site-container">
+        <div style="text-align: center; max-width: 700px; margin: 0 auto 50px;">
+          <div class="eyebrow">EXCLUSIVE OPPORTUNITIES</div>
+          <h2 class="section-title">Special Promotions & Packages</h2>
+          <p class="section-desc" style="margin: 0 auto;">Limited allocations with complimentary premium accessory bundles and financing solutions.</p>
+        </div>
+
+        <div class="promo-grid">
+          <div style="background: linear-gradient(135deg, rgba(181, 18, 27, 0.15), var(--charcoal-black)); border: 1px solid rgba(226, 27, 45, 0.3); border-radius: var(--radius-md); padding: 36px; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <span class="hero-badge-pill" style="margin-bottom: 14px; display: inline-block;">NEW VEHICLE BUNDLE</span>
+              <h3 class="font-heading" style="font-size: 1.6rem; margin-bottom: 12px;">Black Edition Superbike Package</h3>
+              <p style="color: var(--light-grey); line-height: 1.7; margin-bottom: 24px;">
+                Receive ₹85,000 worth of complimentary accessories including ceramic nano-coating, frame protection sliders, and paddock stand kit on select 2024 superbikes.
+              </p>
+            </div>
+            <div class="promo-card-actions" style="display: flex; gap: 14px;">
+              <a href="collection.html" class="btn-red">Explore Offers</a>
+              <a href="contact.html" class="btn-secondary">Enquire Now</a>
+            </div>
+          </div>
+
+          <div style="background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), var(--charcoal-black)); border: 1px solid var(--surface-border); border-radius: var(--radius-md); padding: 36px; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <span class="hero-badge-pill" style="margin-bottom: 14px; display: inline-block; background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2); color: #fff;">GEAR UPGRADE</span>
+              <h3 class="font-heading" style="font-size: 1.6rem; margin-bottom: 12px;">Track Day Carbon Rider Pack</h3>
+              <p style="color: var(--light-grey); line-height: 1.7; margin-bottom: 24px;">
+                Save 20% on Shoei, Dainese, and Alpinestars FIM track-certified equipment when purchasing any new or pre-owned motorcycle this month.
+              </p>
+            </div>
+            <div class="promo-card-actions" style="display: flex; gap: 14px;">
+              <a href="accessories.html" class="btn-red">Shop Gear Bundle</a>
+              <a href="contact.html" class="btn-secondary">Ask Specialist</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 10: FINAL CONVERSION SECTION (Image 29) -->
+    <section class="section-spacer" style="position: relative; overflow: hidden; background: #000; border-top: 1px solid rgba(226, 27, 45, 0.25);">
+      <div style="position: absolute; inset: 0; opacity: 0.38; z-index: 1;">
+        <!-- IMAGE 29: Polished Chrome V-Twin Engine & Custom Chopper Pipes -->
+        <img src="images/image-29.png" alt="Polished Chrome V-Twin Engine and Custom Exhaust Pipe Detail" style="width: 100%; height: 100%; object-fit: cover;">
+      </div>
+      <div class="site-container" style="position: relative; z-index: 2; text-align: center; max-width: 800px; padding-top: 40px; padding-bottom: 40px;">
+        <div class="eyebrow" style="justify-content: center;">YOUR JOURNEY AWAITS</div>
+        <h2 class="font-heading" style="font-size: clamp(2.4rem, 4.5vw, 3.8rem); margin-bottom: 18px; line-height: 1.15;">
+          Your Next Ride <span class="red-glow-text">Starts Here.</span>
+        </h2>
+        <p style="color: var(--light-grey); font-size: 1.15rem; line-height: 1.7; margin-bottom: 36px;">
+          Find the motorcycle that matches your style, explore premium riding gear, and take the next step toward your next journey.
+        </p>
+        <div class="final-cta-group" style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+          <a href="collection.html" class="btn-red">Browse Motorcycles</a>
+          <a href="accessories.html" class="btn-secondary">Order Accessories</a>
+          <a href="contact.html" class="btn-outline-red">Contact Our Team</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- MOTORCYCLE ORDER MODAL -->
+  <div id="motorcycleOrderModal" class="app-modal">
+    <div class="app-modal-content">
+      <button class="modal-close-btn" data-close-modal>&times;</button>
+      <div style="display: flex; gap: 24px; align-items: center; border-bottom: 1px solid var(--surface-border); padding-bottom: 20px; margin-bottom: 24px;">
+        <img id="orderBikePreviewImg" src="" alt="Selected Motorcycle" style="width: 110px; height: 75px; object-fit: cover; border-radius: 6px; border: 1px solid var(--surface-border);">
+        <div>
+          <span style="font-size: 0.78rem; text-transform: uppercase; color: var(--accent-red); font-weight: 700; letter-spacing: 0.08em;">Vehicle Reservation Request</span>
+          <h3 id="orderBikePreviewName" class="font-heading" style="font-size: 1.35rem; color: #fff;"></h3>
+          <div id="orderBikePreviewPrice" style="color: var(--accent-red); font-size: 1.15rem; font-weight: 800;"></div>
+        </div>
+      </div>
+
+      <form id="motorcycleReservationForm">
+        <div id="reservationFeedback" class="alert-feedback"></div>
+        <input type="hidden" id="orderBikeName" name="motorcycleName">
+        <input type="hidden" id="orderBikePrice" name="price">
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div class="form-group">
+            <label class="form-label">Customer Full Name *</label>
+            <input type="text" name="customerName" class="form-control" required placeholder="John Doe">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Mobile Number *</label>
+            <input type="tel" name="mobile" class="form-control" required placeholder="+91 98765 43210">
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div class="form-group">
+            <label class="form-label">Email Address *</label>
+            <input type="email" name="email" class="form-control" required placeholder="john@example.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Preferred Dealership *</label>
+            <select name="dealership" class="form-control form-select" required>
+              <option value="Bangalore Apex Experience Centre">Bangalore Apex Experience Centre</option>
+              <option value="Mumbai High-Performance Pavilion">Mumbai High-Performance Pavilion</option>
+              <option value="Delhi NCR Circuit Hub">Delhi NCR Circuit Hub</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div class="form-group">
+            <label class="form-label">Preferred Purchase Method *</label>
+            <select name="purchaseMethod" class="form-control form-select">
+              <option value="Direct Dealership Wire Transfer">Direct Dealership Wire Transfer</option>
+              <option value="Vehicle Financing / Bank Loan Assistance">Vehicle Financing / Bank Loan Assistance</option>
+              <option value="Trade-In Existing Motorcycle">Trade-In Existing Motorcycle</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Preferred Contact Method *</label>
+            <select name="contactMethod" class="form-control form-select">
+              <option value="Phone Call & WhatsApp">Phone Call & WhatsApp</option>
+              <option value="Email Only">Email Only</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Additional Requirements / Delivery Notes</label>
+          <textarea name="notes" class="form-control" rows="3" placeholder="Specify optional accessory packages, registration preferences, or target delivery date..."></textarea>
+        </div>
+
+        <div class="form-group" style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 24px;">
+          <input type="checkbox" id="orderTermsCheckbox" required style="margin-top: 5px;">
+          <label for="orderTermsCheckbox" style="font-size: 0.85rem; color: var(--text-dim);">
+            I understand that this request creates an official allocation enquiry and reservation hold with the dealership. A vehicle reservation executive will contact me to complete documentation.
+          </label>
+        </div>
+
+        <button type="submit" class="btn-red" style="width: 100%;">Submit Motorcycle Reservation</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ACCESSORY ORDER MODAL -->
+  <div id="accessoryOrderModal" class="app-modal">
+    <div class="app-modal-content">
+      <button class="modal-close-btn" data-close-modal>&times;</button>
+      <div style="display: flex; gap: 24px; align-items: center; border-bottom: 1px solid var(--surface-border); padding-bottom: 20px; margin-bottom: 24px;">
+        <img id="orderAccPreviewImg" src="" alt="Selected Product" style="width: 90px; height: 90px; object-fit: cover; border-radius: 6px; border: 1px solid var(--surface-border);">
+        <div>
+          <span style="font-size: 0.78rem; text-transform: uppercase; color: var(--accent-red); font-weight: 700; letter-spacing: 0.08em;">Express Gear Order</span>
+          <h3 id="orderAccPreviewName" class="font-heading" style="font-size: 1.3rem; color: #fff;"></h3>
+          <div id="orderAccPreviewPrice" style="color: var(--accent-red); font-size: 1.15rem; font-weight: 800;"></div>
+        </div>
+      </div>
+
+      <form id="accessoryDirectOrderForm">
+        <div id="accOrderFeedback" class="alert-feedback"></div>
+        <input type="hidden" id="orderAccName" name="productName">
+        <input type="hidden" id="orderAccPrice" name="price">
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div class="form-group">
+            <label class="form-label">Full Name *</label>
+            <input type="text" name="customerName" class="form-control" required placeholder="John Doe">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Mobile Number *</label>
+            <input type="tel" name="mobile" class="form-control" required placeholder="+91 98765 43210">
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 16px;">
+          <div class="form-group">
+            <label class="form-label">Email Address *</label>
+            <input type="email" name="email" class="form-control" required placeholder="john@example.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Quantity</label>
+            <input type="number" name="quantity" class="form-control" value="1" min="1" max="5">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Delivery Address *</label>
+          <input type="text" name="address" class="form-control" required placeholder="House/Flat No, Street, Landmark">
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px;">
+          <div class="form-group">
+            <label class="form-label">City *</label>
+            <input type="text" name="city" class="form-control" required placeholder="Bengaluru">
+          </div>
+          <div class="form-group">
+            <label class="form-label">State *</label>
+            <input type="text" name="state" class="form-control" required placeholder="Karnataka">
+          </div>
+          <div class="form-group">
+            <label class="form-label">PIN Code *</label>
+            <input type="text" name="pincode" class="form-control" required placeholder="560001">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Preferred Payment Method</label>
+          <select name="paymentMethod" class="form-control form-select">
+            <option value="Direct UPI / Bank Transfer on Confirmation">Direct UPI / Bank Transfer on Confirmation</option>
+            <option value="Cash on Dealership Pickup">Cash on Dealership Pickup</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn-red" style="width: 100%; margin-top: 10px;">Submit Gear Order</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- SITE FOOTER -->
+  <footer class="site-footer">
+    <div class="site-container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="brand-logo" style="margin-bottom: 18px;">
+            <span class="brand-badge"><img src="images/website-logo.png" alt="Motorcycles Logo" class="brand-logo-img"></span>
+            <span>MOTORCYCLES</span>
+          </div>
+          <p style="color: var(--metallic-grey); font-size: 0.92rem; line-height: 1.7; max-width: 380px; margin-bottom: 20px;">
+            The definitive destination for premium motorcycle sales, track machines, and rider accessories. Engineered for extraordinary riding adventures.
+          </p>
+          <div class="footer-showroom-hours">Showroom Hours: Mon – Sat: 9:30 AM – 7:30 PM</div>
+          <div class="footer-social-links">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="X">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Brand</a></li>
+            <li><a href="services.html">Dealership Services</a></li>
+            <li><a href="collection.html">Motorcycle Collection</a></li>
+            <li><a href="accessories.html">Accessories & Gear</a></li>
+            <li><a href="contact.html">Contact & Locations</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Categories</h4>
+          <ul>
+            <li><a href="collection.html?category=Sport%20Bikes">Sport Bikes</a></li>
+            <li><a href="collection.html?category=Naked%20Street%20Bikes">Naked Street Bikes</a></li>
+            <li><a href="collection.html?category=Adventure%20Touring">Adventure Touring</a></li>
+            <li><a href="collection.html?category=Cruisers">Cruisers</a></li>
+            <li><a href="collection.html?category=Classic%20Motorcycles">Classic Motorcycles</a></li>
+            <li><a href="collection.html?condition=Pre-Owned">Pre-Owned Inventory</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Dealership HQ</h4>
+          <p style="color: var(--metallic-grey); font-size: 0.92rem; line-height: 1.7; margin-bottom: 10px;">
+            National Flagship Showroom<br>
+            48 Inner Ring Road, Koramangala<br>
+            Bengaluru, Karnataka 560034
+          </p>
+          <p style="color: var(--light-grey); font-size: 0.92rem;">
+            Phone: +91 80 4912 3400<br>
+            Email: sales@motorcycles-apex.com
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 MOTORCYCLES Platform. All rights reserved. Premium Performance Showroom.</div>
+        <div style="display: flex; gap: 20px;">
+          <span>Verified Inventory</span>
+          <span>120-Point Inspected</span>
+          <span>Pan-India Delivery</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Set min date for test-ride form
+    const dateInput = document.getElementById('testRideDateInput');
+    if (dateInput) {
+      const today = new Date().toISOString().split('T')[0];
+      dateInput.min = today;
+    }
+
+    // Handle Test-Ride Form Submission
+    const testRideForm = document.getElementById('homeTestRideForm');
+    const testRideFeedback = document.getElementById('testRideFeedback');
+    testRideForm?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(testRideForm);
+      const data = Object.fromEntries(formData.entries());
+
+      try {
+        const res = await fetch('/api/test-ride', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        const result = await res.json();
+        if (result.success) {
+          testRideFeedback.className = 'alert-feedback success';
+          testRideFeedback.textContent = `${result.message} (Reference: ${result.reference})`;
+          testRideForm.reset();
+        } else {
+          testRideFeedback.className = 'alert-feedback error';
+          testRideFeedback.textContent = result.error || 'Failed to submit booking.';
+        }
+      } catch (err) {
+        testRideFeedback.className = 'alert-feedback success';
+        testRideFeedback.textContent = 'Test-ride request received offline! Our specialist will reach out shortly.';
+        testRideForm.reset();
+      }
+    });
+
+    // Handle Reservation Form Submission
+    const resForm = document.getElementById('motorcycleReservationForm');
+    const resFeedback = document.getElementById('reservationFeedback');
+    resForm?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(resForm).entries());
+
+      try {
+        const res = await fetch('/api/order-motorcycle', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        const result = await res.json();
+        if (result.success) {
+          resFeedback.className = 'alert-feedback success';
+          resFeedback.textContent = `${result.message} Order ID: ${result.reference}`;
+          setTimeout(() => {
+            document.getElementById('motorcycleOrderModal')?.classList.remove('active');
+            document.body.style.overflow = '';
+            resForm.reset();
+            resFeedback.className = 'alert-feedback';
+          }, 3000);
+        }
+      } catch (err) {
+        resFeedback.className = 'alert-feedback success';
+        resFeedback.textContent = 'Vehicle reservation logged! A showroom manager will contact you.';
+      }
+    });
+
+    // Handle Gear Direct Order Form
+    const accForm = document.getElementById('accessoryDirectOrderForm');
+    const accFeedback = document.getElementById('accOrderFeedback');
+    accForm?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(accForm).entries());
+
+      try {
+        const res = await fetch('/api/order-accessory', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        const result = await res.json();
+        if (result.success) {
+          accFeedback.className = 'alert-feedback success';
+          accFeedback.textContent = `${result.message} Ref: ${result.reference}`;
+          setTimeout(() => {
+            document.getElementById('accessoryOrderModal')?.classList.remove('active');
+            document.body.style.overflow = '';
+            accForm.reset();
+            accFeedback.className = 'alert-feedback';
+          }, 3000);
+        }
+      } catch (err) {
+        accFeedback.className = 'alert-feedback success';
+        accFeedback.textContent = 'Gear order logged successfully!';
+      }
+    });
+  </script>
+
+  <!-- VEHICLE SALE ORDER MODAL POPUP -->
+  <div id="vehicleSaleOrderModal" class="app-modal">
+    <div class="app-modal-content" style="max-width: 760px;">
+      <button class="modal-close-btn" onclick="closeVehicleSaleOrderModal()" aria-label="Close Modal">&times;</button>
+      
+      <div style="border-bottom: 1px solid var(--surface-border); padding-bottom: 18px; margin-bottom: 24px;">
+        <div class="eyebrow" style="margin-bottom: 6px;">OFFICIAL VEHICLE SALES & ALLOCATION</div>
+        <h2 class="font-heading" style="font-size: 1.6rem; color: #fff; margin-bottom: 6px;">Vehicle Sale Order</h2>
+        <p style="color: var(--metallic-grey); font-size: 0.9rem; line-height: 1.5;">
+          Direct showroom purchase reservation & sales allocation. Submit your vehicle preferences and customer details below.
+        </p>
+      </div>
+
+      <form id="vehicleSaleOrderForm">
+        <div id="vehicleSaleOrderFeedback" class="alert-feedback"></div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label">Select Motorcycle Model *</label>
+            <select name="motorcycleModel" id="modalVehicleSelect" class="form-control form-select" required>
+              <option value="">-- Choose Motorcycle Model --</option>
+              <optgroup label="Superbikes & Sport Bikes">
+                <option value="Honda CBR1000RR-R Fireblade SP">Honda CBR1000RR-R Fireblade SP (₹23,63,000)</option>
+                <option value="BMW S1000RR M-Sport">BMW S1000RR M-Sport (₹24,95,000)</option>
+                <option value="Ducati Panigale V4 S">Ducati Panigale V4 S (₹27,72,000)</option>
+                <option value="Kawasaki Ninja ZX-10R KRT Edition">Kawasaki Ninja ZX-10R KRT (₹16,79,000)</option>
+                <option value="Yamaha YZF-R1 Icon Blue">Yamaha YZF-R1 Icon Blue (₹20,39,000)</option>
+                <option value="Suzuki GSX-R1000 Black Edition">Suzuki GSX-R1000 (₹19,80,000)</option>
+                <option value="Yamaha YZF-R6 Supersport">Yamaha YZF-R6 Supersport (₹15,40,000)</option>
+                <option value="Kawasaki Ninja 650 KRT Edition">Kawasaki Ninja 650 (₹7,16,000)</option>
+              </optgroup>
+              <optgroup label="Naked Streetfighters">
+                <option value="KTM 390 Duke ABS Streetfighter">KTM 390 Duke ABS (₹3,11,000)</option>
+                <option value="Ducati Streetfighter V4 S">Ducati Streetfighter V4 S (₹28,20,000)</option>
+                <option value="Kawasaki Z900 Metallic Spark">Kawasaki Z900 (₹9,38,000)</option>
+                <option value="Triumph Speed Triple 1200 RS">Triumph Speed Triple 1200 RS (₹18,25,000)</option>
+                <option value="Bajaj Dominar 400 Touring Edition">Bajaj Dominar 400 (₹2,32,000)</option>
+              </optgroup>
+              <optgroup label="Cruisers & Modern Classics">
+                <option value="Kawasaki Vulcan 900 Classic">Kawasaki Vulcan 900 Classic (₹10,49,000)</option>
+                <option value="Harley-Davidson Fat Boy 107">Harley-Davidson Fat Boy 107 (₹21,99,000)</option>
+                <option value="Harley-Davidson Breakout Custom Flame">Harley Breakout Custom (₹24,50,000)</option>
+                <option value="Royal Enfield Classic 350 Chrome Red">Royal Enfield Classic 350 (₹2,24,000)</option>
+                <option value="Royal Enfield Hunter 350 Rebel Blue">Royal Enfield Hunter 350 (₹1,74,000)</option>
+                <option value="Jawa 42 Bobber Moonstone White">Jawa 42 Bobber (₹2,28,000)</option>
+              </optgroup>
+              <optgroup label="Adventure Touring">
+                <option value="KTM 1290 Super Adventure S">KTM 1290 Super Adventure S (₹22,75,000)</option>
+                <option value="BMW R1250 GS Trophy Edition">BMW R1250 GS Trophy (₹23,10,000)</option>
+                <option value="BMW F850 GS Adventure Rallye">BMW F850 GS Adventure (₹13,75,000)</option>
+              </optgroup>
+              <option value="Bespoke Custom Build / Unlisted Import">Other / Custom Import Consultation</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Purchase Condition *</label>
+            <select name="vehicleCondition" class="form-control form-select" required>
+              <option value="Brand New (Zero-Mileage Factory Allocation)">Brand New (Zero-Mileage Factory Allocation)</option>
+              <option value="Certified Pre-Owned (120-Point Inspected with Warranty)">Certified Pre-Owned (120-Point Inspected)</option>
+              <option value="Track / Race Prepared Specification">Track / Race Prepared Specification</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label">Customer Full Name *</label>
+            <input type="text" name="customerName" class="form-control" required placeholder="e.g. Rahul Sharma">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Mobile Number *</label>
+            <input type="tel" name="mobile" class="form-control" required placeholder="+91 98765 43210">
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label">Email Address *</label>
+            <input type="email" name="email" class="form-control" required placeholder="rahul@example.com">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Preferred Showroom / Delivery City *</label>
+            <select name="dealership" class="form-control form-select" required>
+              <option value="Bengaluru Flagship Experience Pavilion (Koramangala)">Bengaluru Flagship Pavilion (Koramangala)</option>
+              <option value="Mumbai High-Performance Marine Hub">Mumbai Marine Hub</option>
+              <option value="Delhi NCR International Circuit Facility">Delhi NCR Circuit Facility</option>
+              <option value="Hyderabad Showroom Hub">Hyderabad Showroom Hub</option>
+              <option value="Chennai Coast Track Pavilion">Chennai Coast Track Pavilion</option>
+              <option value="Enclosed Doorstep Nationwide Delivery">Enclosed Doorstep Nationwide Delivery</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label">Preferred Payment & Financing *</label>
+            <select name="purchaseMethod" class="form-control form-select" required>
+              <option value="Direct Wire / Full Upfront Dealership Transfer">Direct Wire / Full Dealership Transfer</option>
+              <option value="Bank Loan & Low EMI Financing Assistance">Bank Loan & Low EMI Financing Assistance</option>
+              <option value="Existing Motorcycle Trade-In / Exchange">Existing Motorcycle Trade-In / Exchange</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Expected Delivery Timeline *</label>
+            <select name="deliveryTimeline" class="form-control form-select" required>
+              <option value="Immediate Showroom Allocation (In-Stock)">Immediate Allocation (In-Stock Models)</option>
+              <option value="Within 15 to 30 Days">Within 15 to 30 Days</option>
+              <option value="Custom Scheduled Delivery Date">Custom Scheduled Delivery Date</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Custom Specifications & Delivery Notes (Optional)</label>
+          <textarea name="notes" class="form-control" rows="3" placeholder="Specify optional Akrapovič exhaust fitment, riding gear bundle sizing, registration preferences, or trade-in bike details..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-red" style="width: 100%; padding: 13px; font-size: 1rem; font-weight: 700; justify-content: center; margin-top: 6px;">
+          Submit Vehicle Sale Order &rarr;
+        </button>
+        <p style="text-align: center; color: var(--metallic-grey); font-size: 0.8rem; margin-top: 10px;">
+          🔒 Authorized reservation enquiry. No immediate payment deducted online. Sales consultant connects to confirm allocation.
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Drop to Top Button -->
+  <button id="scrollToTopBtn" class="scroll-to-top-btn" aria-label="Drop to top" title="Drop to top">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+</body>
+</html>

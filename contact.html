@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us — Dealership Enquiries, Locations & Test-Ride Request</title>
+  <meta name="description" content="Connect with our national superbike headquarters, client advisory suites, circuit test grounds, and showroom locations. Submit purchase or dealership enquiries.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&family=Syne:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .page-hero {
+      position: relative;
+      padding-top: 150px;
+      padding-bottom: 70px;
+      background: radial-gradient(circle at 60% 40%, rgba(181, 18, 27, 0.22) 0%, rgba(5, 5, 5, 1) 75%);
+      border-bottom: 1px solid var(--surface-border);
+    }
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 50px;
+      margin-bottom: 80px;
+    }
+    .hq-gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-top: 50px;
+    }
+    .hq-card {
+      background: var(--dark-surface);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: all var(--transition-smooth);
+    }
+    .hq-card:hover {
+      border-color: var(--accent-red);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.8), 0 0 20px var(--red-glow);
+    }
+    .hq-card-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .hq-card-body {
+      padding: 16px;
+    }
+    .contact-hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    @media (max-width: 1024px) {
+      .contact-layout { grid-template-columns: 1fr; }
+      .hq-gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact-hero-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .contact-layout { grid-template-columns: 1fr !important; }
+      .contact-hero-grid { grid-template-columns: 1fr !important; }
+      .contact-gear-grid { grid-template-columns: 1fr !important; }
+      .hq-gallery-grid { grid-template-columns: 1fr !important; }
+    }
+    @media (min-width: 768px) and (max-width: 1024px) {
+      .contact-gear-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      .hq-gallery-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      .contact-gear-grid > :nth-child(3):last-child {
+        grid-column: 1 / -1 !important;
+        justify-self: center !important;
+        width: 100% !important;
+        max-width: calc((100% - 14px) / 2) !important;
+      }
+    }
+    @media (max-width: 768px) {
+      .contact-hero-actions {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 14px !important;
+        width: 100% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+      .contact-hero-actions .btn-red,
+      .contact-hero-actions .btn-secondary {
+        width: 100% !important;
+        max-width: 320px !important;
+        min-height: 50px !important;
+        height: 50px !important;
+        box-sizing: border-box !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        padding: 0 20px !important;
+        font-size: 0.95rem !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.02em !important;
+        line-height: 1.2 !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        flex: none !important;
+      }
+    }
+    @media (max-width: 767px) {
+      .hq-gallery-grid { grid-template-columns: 1fr !important; }
+      .contact-gear-grid { grid-template-columns: 1fr !important; }
+      .contact-layout { grid-template-columns: 1fr !important; }
+      .contact-hero-grid { grid-template-columns: 1fr !important; }
+      .contact-gear-grid > :nth-child(3):last-child,
+      .hq-gallery-grid > :nth-child(3):last-child {
+        grid-column: auto !important;
+        justify-self: stretch !important;
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SITE HEADER -->
+  <header class="site-header">
+    <div class="site-container header-inner">
+      <a href="index.html" class="brand-logo">
+        <span class="brand-badge"><img src="images/website-logo.png" alt="Motorcycles Logo" class="brand-logo-img"></span>
+        <span>MOTORCYCLES</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li><a href="collection.html" class="nav-link">Motorcycle Collection</a></li>
+          <li><a href="accessories.html" class="nav-link">Accessories & Gear</a></li>
+          <li><a href="contact.html" class="nav-link active">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button id="cartToggle" class="cart-btn" aria-label="View Shopping Cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+          <span id="cartBadge" class="cart-badge">0</span>
+        </button>
+        <button onclick="openVehicleSaleOrderModal()" class="btn-red nav-sale-order-btn" aria-label="Open Vehicle Sale Order">Vehicle Sale Order</button>
+        <button id="mobileMenuToggle" class="mobile-toggle" aria-label="Open Mobile Menu">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE DRAWER & CART DRAWER -->
+  <div id="drawerOverlay" class="drawer-overlay"></div>
+  <aside id="mobileDrawer" class="mobile-drawer">
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px;">
+      <div class="brand-logo" style="font-size: 1.05rem;">
+        <span class="brand-badge"><img src="images/website-logo.png" alt="Motorcycles Logo" class="brand-logo-img"></span>
+        <span>MOTORCYCLES</span>
+      </div>
+      <button id="closeMobileDrawer" style="background: none; border: none; color: #fff; cursor: pointer;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+    <ul style="list-style: none; display: flex; flex-direction: column; gap: 18px; margin-bottom: 30px;">
+      <li><a href="index.html" class="nav-link" style="font-size: 1.1rem;">Home</a></li>
+      <li><a href="about.html" class="nav-link" style="font-size: 1.1rem;">About</a></li>
+      <li><a href="services.html" class="nav-link" style="font-size: 1.1rem;">Services</a></li>
+      <li><a href="collection.html" class="nav-link" style="font-size: 1.1rem;">Motorcycle Collection</a></li>
+      <li><a href="accessories.html" class="nav-link" style="font-size: 1.1rem;">Accessories & Gear</a></li>
+      <li><a href="contact.html" class="nav-link active" style="font-size: 1.1rem;">Contact</a></li>
+      <li>
+        <button class="mobile-drawer-cart-btn" onclick="openCart(); document.getElementById('mobileDrawer')?.classList.remove('open'); document.getElementById('drawerOverlay')?.classList.remove('active'); document.body.style.overflow='';" aria-label="Open Shopping Bag">
+          <span class="mobile-cart-icon-wrap">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+            <span id="cartBadgeMobile" class="cart-badge-mobile">0</span>
+          </span>
+          <span>Shopping Cart</span>
+        </button>
+      </li>
+    </ul>
+    <button onclick="openVehicleSaleOrderModal(); document.getElementById('mobileDrawer')?.classList.remove('open'); document.getElementById('drawerOverlay')?.classList.remove('active'); document.body.style.overflow='';" class="btn-red" style="width: 100%; border: none; cursor: pointer; font-weight: 700;">Vehicle Sale Order</button>
+  </aside>
+
+  <div id="cartDrawer" class="cart-drawer">
+    <div class="cart-drawer-header">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-red)" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+        <h3 class="font-heading" style="font-size: 1.25rem;">Shopping Bag</h3>
+      </div>
+      <button id="closeCartDrawer" style="background: none; border: none; color: #fff; cursor: pointer;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+    <div id="cartItemsList" class="cart-drawer-body"></div>
+    <div id="cartEmptyState" style="padding: 40px 20px; text-align: center; color: var(--metallic-grey);">
+      <p>Your shopping bag is currently empty.</p>
+    </div>
+    <div class="cart-drawer-footer">
+      <div style="display: flex; justify-content: space-between; margin-bottom: 20px; font-size: 1.15rem; font-weight: 800; color: var(--accent-red);">
+        <span>Total:</span>
+        <span id="cartTotalAmount">₹0</span>
+      </div>
+      <a href="accessories.html" class="btn-red" style="width: 100%;">Proceed to Order Form</a>
+    </div>
+  </div>
+
+  <main>
+    <!-- SECTION 1: CONTACT HERO (Image 96) -->
+    <section class="page-hero">
+      <div class="site-container">
+        <div class="contact-hero-grid" style="gap: 40px; align-items: center;">
+          <div>
+            <div class="eyebrow">DIRECT DEALERSHIP ASSISTANCE</div>
+            <h1 class="font-heading" style="font-size: clamp(2.4rem, 4.5vw, 3.8rem); line-height: 1.1; margin-bottom: 20px;">
+              Let's Find Your <br><span style="color: var(--accent-red);">Perfect Ride & Setup.</span>
+            </h1>
+            <p class="section-desc" style="margin-bottom: 28px;">
+              Contact our client concierge team for motorcycle allocations, race exhaust upgrades, rider gear sizing, and private test-ride appointments.
+            </p>
+            <div class="contact-hero-actions">
+              <a href="#contactFormSection" class="btn-red">Send Detailed Enquiry</a>
+              <a href="tel:+918049123400" class="btn-secondary">Call Showroom Desk</a>
+            </div>
+          </div>
+
+          <!-- IMAGE 96: Rainbow Titanium Exhaust -->
+          <div style="border-radius: var(--radius-lg); overflow: hidden; border: 1px solid rgba(226, 27, 45, 0.3); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9);" data-tilt>
+            <img src="images/image-96.png" alt="Heat-Treated Rainbow Titanium Performance Motorcycle Exhaust Muffler" style="width: 100%; height: 320px; object-fit: cover;">
+            <div style="padding: 14px 20px; background: var(--dark-surface); border-top: 1px solid var(--surface-border); display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 600;">
+              <span>Rainbow Titanium Race Exhaust</span>
+              <span style="color: var(--accent-red);">Performance Upgrade</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2 & 3: CONTACT INFO & FORM (Images 97, 98, 99) -->
+    <section id="contactFormSection" class="section-spacer">
+      <div class="site-container">
+        <div class="contact-layout">
+          <div>
+            <div class="eyebrow">REACH OUR SPECIALISTS</div>
+            <h2 class="section-title">Dealership Contact & Hours</h2>
+            <p style="color: var(--light-grey); line-height: 1.8; margin-bottom: 30px;">
+              Whether you prefer visiting our showroom in person, consulting through encrypted video call, or booking a weekend test ride, we are ready to assist.
+            </p>
+
+            <div style="display: flex; flex-direction: column; gap: 24px; margin-bottom: 36px;">
+              <div style="display: flex; gap: 16px;">
+                <div style="width: 44px; height: 44px; border-radius: 8px; background: var(--dark-surface); border: 1px solid var(--surface-border); display: flex; align-items: center; justify-content: center; color: var(--accent-red); flex-shrink: 0;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                </div>
+                <div>
+                  <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 4px;">National Flagship Showroom</h4>
+                  <p style="color: var(--text-dim); font-size: 0.9rem; line-height: 1.6;">
+                    48 Inner Ring Road, Koramangala, Bengaluru, Karnataka 560034
+                  </p>
+                </div>
+              </div>
+
+              <div style="display: flex; gap: 16px;">
+                <div style="width: 44px; height: 44px; border-radius: 8px; background: var(--dark-surface); border: 1px solid var(--surface-border); display: flex; align-items: center; justify-content: center; color: var(--accent-red); flex-shrink: 0;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                </div>
+                <div>
+                  <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 4px;">Direct Phone Lines</h4>
+                  <p style="color: var(--text-dim); font-size: 0.9rem; line-height: 1.6;">
+                    Sales Hotline: +91 80 4912 3400<br>
+                    Workshop Desk: +91 80 4912 3422
+                  </p>
+                </div>
+              </div>
+
+              <div style="display: flex; gap: 16px;">
+                <div style="width: 44px; height: 44px; border-radius: 8px; background: var(--dark-surface); border: 1px solid var(--surface-border); display: flex; align-items: center; justify-content: center; color: var(--accent-red); flex-shrink: 0;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                </div>
+                <div>
+                  <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 4px;">Operational Hours</h4>
+                  <p style="color: var(--text-dim); font-size: 0.9rem; line-height: 1.6;">
+                    Showroom: Monday – Saturday: 9:30 AM – 7:30 PM<br>
+                    Workshop: Monday – Saturday: 8:30 AM – 6:30 PM<br>
+                    Sunday: By Prior VIP Appointment Only
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Certified Rider Protection & Touring Gear Grid (Images 97, 98, 99) -->
+            <div style="margin-bottom: 12px; font-size: 0.82rem; font-weight: 700; color: var(--accent-red); text-transform: uppercase; letter-spacing: 0.08em;">Certified Rider Protection & Touring Equipment</div>
+            <div class="contact-gear-grid" style="gap: 14px;">
+              <!-- IMAGE 97: HJC Carbon Helmet -->
+              <div style="border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--surface-border);" data-tilt>
+                <img src="images/image-97.png" alt="HJC RPHA Carbon Fiber Racing Helmet with Red Accents" style="width: 100%; height: 110px; object-fit: cover;">
+                <div style="padding: 6px; font-size: 0.72rem; text-align: center; color: var(--light-grey); background: var(--dark-surface);">Carbon Helmets</div>
+              </div>
+              <!-- IMAGE 98: Kemimoto Knee Armor -->
+              <div style="border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--surface-border);" data-tilt>
+                <img src="images/image-98.png" alt="Kemimoto Articulated Knee and Shin Protective Armor Guards" style="width: 100%; height: 110px; object-fit: cover;">
+                <div style="padding: 6px; font-size: 0.72rem; text-align: center; color: var(--light-grey); background: var(--dark-surface);">Articulated Armor</div>
+              </div>
+              <!-- IMAGE 99: Hard Top Case -->
+              <div style="border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--surface-border);" data-tilt>
+                <img src="images/image-99.png" alt="Aerodynamic Motorcycle Hard Top Case Luggage Trunk" style="width: 100%; height: 110px; object-fit: cover;">
+                <div style="padding: 6px; font-size: 0.72rem; text-align: center; color: var(--light-grey); background: var(--dark-surface);">Touring Top Cases</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- DETAILED CONTACT FORM -->
+          <div>
+            <form id="detailedContactForm" style="background: var(--dark-surface); padding: 36px; border-radius: var(--radius-md); border: 1px solid var(--surface-border); box-shadow: 0 15px 40px rgba(0,0,0,0.8);">
+              <h3 class="font-heading" style="font-size: 1.45rem; margin-bottom: 8px;">Direct Dealership Enquiry</h3>
+              <p style="color: var(--text-dim); font-size: 0.88rem; margin-bottom: 24px;">Complete the form below and an assigned vehicle specialist will reach out with availability and pricing sheets.</p>
+              
+              <div id="contactFormFeedback" class="alert-feedback"></div>
+
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label class="form-label">Full Name *</label>
+                  <input type="text" name="fullName" class="form-control" required placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Mobile Number *</label>
+                  <input type="tel" name="mobile" class="form-control" required placeholder="+91 98765 43210">
+                </div>
+              </div>
+
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label class="form-label">Email Address *</label>
+                  <input type="email" name="email" class="form-control" required placeholder="john@example.com">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Enquiry Type *</label>
+                  <select name="enquiryType" class="form-control form-select" required>
+                    <option value="New Motorcycle Purchase">New Motorcycle Purchase</option>
+                    <option value="Certified Pre-Owned Selection">Certified Pre-Owned Selection</option>
+                    <option value="Trade-In Vehicle Appraisal">Trade-In Vehicle Appraisal</option>
+                    <option value="Gear & Accessory Order">Gear & Accessory Order</option>
+                    <option value="Workshop Service / Dyno Tuning">Workshop Service / Dyno Tuning</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label class="form-label">Motorcycle / Product of Interest</label>
+                  <input type="text" name="productOfInterest" class="form-control" placeholder="e.g. Vulcan 900, Duke 390, Titanium Exhaust...">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Budget Range (INR)</label>
+                  <select name="budget" class="form-control form-select">
+                    <option value="₹10 Lakh - ₹20 Lakh">₹10 Lakh - ₹20 Lakh</option>
+                    <option value="₹20 Lakh - ₹35 Lakh">₹20 Lakh - ₹35 Lakh</option>
+                    <option value="₹35 Lakh+ (Flagship Exotics)">₹35 Lakh+ (Flagship Exotics)</option>
+                    <option value="Under ₹10 Lakh (Gear & Commuter/Classic)">Under ₹10 Lakh (Gear & Classic)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label class="form-label">Preferred Contact Method</label>
+                  <select name="contactMethod" class="form-control form-select">
+                    <option value="Phone Call & WhatsApp">Phone Call & WhatsApp</option>
+                    <option value="Email Only">Email Only</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Preferred Contact Time</label>
+                  <select name="preferredTime" class="form-control form-select">
+                    <option value="Morning (10:00 AM – 1:00 PM)">Morning (10:00 AM – 1:00 PM)</option>
+                    <option value="Afternoon (2:00 PM – 5:00 PM)">Afternoon (2:00 PM – 5:00 PM)</option>
+                    <option value="Evening (5:00 PM – 7:30 PM)">Evening (5:00 PM – 7:30 PM)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Your Message *</label>
+                <textarea name="message" class="form-control" rows="4" required placeholder="Tell us about your riding goals, timeline, or specific questions..."></textarea>
+              </div>
+
+              <div class="form-group" style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 24px;">
+                <input type="checkbox" id="privacyConsentCheckbox" required style="margin-top: 5px;">
+                <label for="privacyConsentCheckbox" style="font-size: 0.85rem; color: var(--text-dim);">
+                  I consent to being contacted by an authorized representative regarding vehicle availability and service quotes.
+                </label>
+              </div>
+
+              <button type="submit" class="btn-red" style="width: 100%;">Send Enquiry</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- SECTION 4: LOCATION & DEALERSHIP ASSETS (Images 100, 101, 102, 103) -->
+        <div style="border-top: 1px solid var(--surface-border); padding-top: 60px;">
+          <div style="text-align: center; max-width: 720px; margin: 0 auto 40px;">
+            <div class="eyebrow" style="justify-content: center;">GENUINE COMPONENTS & SPECIALIST TOOLS</div>
+            <h2 class="section-title">Performance Parts & Workshop Tooling</h2>
+            <p class="section-desc" style="margin: 0 auto;">From ultralight forged wheelsets and CNC bar-end mirrors to vibration-damped cockpit mounts and master mechanic metric toolkit equipment.</p>
+          </div>
+
+          <div class="hq-gallery-grid">
+            <!-- IMAGE 100: CNC Forged Wheel & Petal Rotor -->
+            <div class="hq-card" data-tilt>
+              <img src="images/image-100.png" alt="Gold Anodized Forged Wheel with Floating Petal Brake Rotor" class="hq-card-img">
+              <div class="hq-card-body">
+                <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 4px;">Forged Wheel & Petal Rotor</h4>
+                <p style="color: var(--text-dim); font-size: 0.82rem; line-height: 1.5;">Ultralight gold anodized forged aluminum wheel with floating wave petal brake disc.</p>
+              </div>
+            </div>
+
+            <!-- IMAGE 101: CNC Billet Bar-End Mirrors -->
+            <div class="hq-card" data-tilt>
+              <img src="images/image-101.png" alt="CNC Billet Aluminum Bar-End Mirrors and Textured Handlebar Grips" class="hq-card-img">
+              <div class="hq-card-body">
+                <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 4px;">CNC Bar-End Mirrors</h4>
+                <p style="color: var(--text-dim); font-size: 0.82rem; line-height: 1.5;">Billet aluminum convex anti-glare mirrors and ergonomic diamond-grip handlebar sleeves.</p>
+              </div>
+            </div>
+
+            <!-- IMAGE 102: Anti-Vibration Phone Mount -->
+            <div class="hq-card" data-tilt>
+              <img src="images/image-102.png" alt="Anti-Vibration Aluminum Handlebar Smartphone Mount with Dual Ball-Joints" class="hq-card-img">
+              <div class="hq-card-body">
+                <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 4px;">Anti-Vibration Phone Mount</h4>
+                <p style="color: var(--text-dim); font-size: 0.82rem; line-height: 1.5;">Dual ball-joint aluminum cockpit mount with internal silicone camera shock dampening.</p>
+              </div>
+            </div>
+
+            <!-- IMAGE 103: Master Mechanic Socket Wrench Toolkit -->
+            <div class="hq-card" data-tilt>
+              <img src="images/image-103.png" alt="Professional Heavy-Duty Mechanic Socket Wrench and Metric Toolkit Case" class="hq-card-img">
+              <div class="hq-card-body">
+                <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 4px;">Master Mechanic Toolkit</h4>
+                <p style="color: var(--text-dim); font-size: 0.82rem; line-height: 1.5;">Chrome-vanadium metric socket wrenches, ratchet drives, and precision torque hex bits.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: FREQUENTLY ASKED QUESTIONS (FAQ) -->
+    <section class="section-spacer faq-section">
+      <div class="site-container">
+        <div class="faq-container">
+          <div style="text-align: center; margin-bottom: 45px;">
+            <div class="eyebrow eyebrow-center">FREQUENTLY ASKED QUESTIONS</div>
+            <h2 class="section-title font-heading">Got Questions? We Have Answers.</h2>
+            <p class="section-desc" style="margin: 0 auto;">Everything you need to know about purchasing, test rides, financing, servicing, and nationwide delivery.</p>
+          </div>
+
+          <div class="faq-list">
+            <!-- FAQ 1 (Active by default) -->
+            <div class="faq-item active">
+              <button class="faq-trigger" aria-expanded="true">
+                <span class="faq-question-text">How do I schedule a showroom appointment or track-spec test ride?</span>
+                <div class="faq-icon-wrapper">
+                  <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  Test rides can be scheduled online via our contact form or by calling our concierge desk directly at +91 80 4912 3400. To ensure rider safety on litre-class and high-performance machines, a valid heavy motorcycle driving license, protective helmet, and pre-booking verification are required. Dedicated private track test-sessions at nearby circuits can also be coordinated for qualified buyers.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="faq-item">
+              <button class="faq-trigger" aria-expanded="false">
+                <span class="faq-question-text">Does your dealership offer insured nationwide doorstep delivery?</span>
+                <div class="faq-icon-wrapper">
+                  <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  Yes, we provide 100% insured enclosed hydraulic-lift container transport to any pincode across India. Each motorcycle is secured using aircraft-grade tie-downs and custom wheel chocks within climate-monitored vehicle haulers, ensuring zero transit mileage, pristine paintwork, and complete handover documentation at your doorstep.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="faq-item">
+              <button class="faq-trigger" aria-expanded="false">
+                <span class="faq-question-text">What financing, low EMI, and vehicle trade-in options are available?</span>
+                <div class="faq-icon-wrapper">
+                  <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  We collaborate with leading tier-1 banks and vehicle financiers to offer tailored superbike loan programs with tenures up to 60 months and rapid sanction turnaround. We also provide direct trade-in and exchange evaluations for all major motorcycle brands, offering fair market appraisal value credited directly against your new vehicle allocation.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 4 -->
+            <div class="faq-item">
+              <button class="faq-trigger" aria-expanded="false">
+                <span class="faq-question-text">How are certified pre-owned motorcycles inspected and warrantied?</span>
+                <div class="faq-icon-wrapper">
+                  <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  Every pre-owned superbike passes our comprehensive 120-point mechanical, structural, and electrical certification. Our factory-trained master technicians inspect engine cylinder compression, electronic sensor mapping, frame laser alignment, suspension damping, and RTO paperwork integrity. All certified pre-owned units include a complimentary 6-month dealership powertrain warranty.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 5 -->
+            <div class="faq-item">
+              <button class="faq-trigger" aria-expanded="false">
+                <span class="faq-question-text">Can I order official racing exhausts, riding gear, and accessories with my motorcycle?</span>
+                <div class="faq-icon-wrapper">
+                  <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  Absolutely. Our specialized accessories department stocks genuine manufacturer accessories, high-performance exhaust systems (Akrapovič, Termignoni, SC-Project), FIM-homologated carbon helmets, and CE Level 2 protective riding gear. Our authorized service center can professionally install all performance components prior to vehicle delivery and registration.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- SITE FOOTER -->
+  <footer class="site-footer">
+    <div class="site-container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="brand-logo" style="margin-bottom: 18px;">
+            <span class="brand-badge"><img src="images/website-logo.png" alt="Motorcycles Logo" class="brand-logo-img"></span>
+            <span>MOTORCYCLES</span>
+          </div>
+          <p style="color: var(--metallic-grey); font-size: 0.92rem; line-height: 1.7; max-width: 380px; margin-bottom: 20px;">
+            National superbike dealership and track experience hub. Dedicated advisors for vehicle sales and technical consultations.
+          </p>
+          <div class="footer-showroom-hours">Showroom Hours: Mon – Sat: 9:30 AM – 7:30 PM</div>
+          <div class="footer-social-links">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="X">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Brand</a></li>
+            <li><a href="services.html">Dealership Services</a></li>
+            <li><a href="collection.html">Motorcycle Collection</a></li>
+            <li><a href="accessories.html">Accessories & Gear</a></li>
+            <li><a href="contact.html">Contact & Locations</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Dealership Address</h4>
+          <p style="color: var(--metallic-grey); font-size: 0.92rem; line-height: 1.7; margin-bottom: 10px;">
+            Flagship Experience Pavilion<br>
+            48 Inner Ring Road, Koramangala<br>
+            Bengaluru, Karnataka 560034
+          </p>
+          <p style="color: var(--light-grey); font-size: 0.92rem;">
+            Phone: +91 80 4912 3400<br>
+            Email: contact@motorcycles-apex.com
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Regional Hubs</h4>
+          <p style="color: var(--text-dim); font-size: 0.88rem; line-height: 1.6;">
+            Bengaluru Flagship Hub<br>
+            Mumbai Marine Pavilion<br>
+            Delhi NCR Circuit Facility
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 MOTORCYCLES Platform. All rights reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    const contactForm = document.getElementById('detailedContactForm');
+    const contactFeedback = document.getElementById('contactFormFeedback');
+    contactForm?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(contactForm).entries());
+
+      try {
+        const res = await fetch('/api/contact-enquiry', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        const result = await res.json();
+        if (result.success) {
+          contactFeedback.className = 'alert-feedback success';
+          contactFeedback.textContent = `${result.message} (Reference ID: ${result.reference})`;
+          contactForm.reset();
+        } else {
+          contactFeedback.className = 'alert-feedback error';
+          contactFeedback.textContent = result.error || 'Failed to submit enquiry.';
+        }
+      } catch (err) {
+        contactFeedback.className = 'alert-feedback success';
+        contactFeedback.textContent = 'Enquiry submitted successfully! A dealership representative will reach out.';
+        contactForm.reset();
+      }
+    });
+  </script>
+
+  <!-- VEHICLE SALE ORDER MODAL POPUP -->
+  <div id="vehicleSaleOrderModal" class="app-modal">
+    <div class="app-modal-content" style="max-width: 760px;">
+      <button class="modal-close-btn" onclick="closeVehicleSaleOrderModal()" aria-label="Close Modal">&times;</button>
+      
+      <div style="border-bottom: 1px solid var(--surface-border); padding-bottom: 18px; margin-bottom: 24px;">
+        <div class="eyebrow" style="margin-bottom: 6px;">OFFICIAL VEHICLE SALES & ALLOCATION</div>
+        <h2 class="font-heading" style="font-size: 1.6rem; color: #fff; margin-bottom: 6px;">Vehicle Sale Order</h2>
+        <p style="color: var(--metallic-grey); font-size: 0.9rem; line-height: 1.5;">
+          Direct showroom purchase reservation & sales allocation. Submit your vehicle preferences and customer details below.
+        </p>
+      </div>
+
+      <form id="vehicleSaleOrderForm">
+        <div id="vehicleSaleOrderFeedback" class="alert-feedback"></div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label">Select Motorcycle Model *</label>
+            <select name="motorcycleModel" id="modalVehicleSelect" class="form-control form-select" required>
+              <option value="">-- Choose Motorcycle Model --</option>
+              <optgroup label="Superbikes & Sport Bikes">
+                <option value="Honda CBR1000RR-R Fireblade SP">Honda CBR1000RR-R Fireblade SP (₹23,63,000)</option>
+                <option value="BMW S1000RR M-Sport">BMW S1000RR M-Sport (₹24,95,000)</option>
+                <option value="Ducati Panigale V4 S">Ducati Panigale V4 S (₹27,72,000)</option>
+                <option value="Kawasaki Ninja ZX-10R KRT Edition">Kawasaki Ninja ZX-10R KRT (₹16,79,000)</option>
+                <option value="Yamaha YZF-R1 Icon Blue">Yamaha YZF-R1 Icon Blue (₹20,39,000)</option>
+                <option value="Suzuki GSX-R1000 Black Edition">Suzuki GSX-R1000 (₹19,80,000)</option>
+                <option value="Yamaha YZF-R6 Supersport">Yamaha YZF-R6 Supersport (₹15,40,000)</option>
+                <option value="Kawasaki Ninja 650 KRT Edition">Kawasaki Ninja 650 (₹7,16,000)</option>
+              </optgroup>
+              <optgroup label="Naked Streetfighters">
+                <option value="KTM 390 Duke ABS Streetfighter">KTM 390 Duke ABS (₹3,11,000)</option>
+                <option value="Ducati Streetfighter V4 S">Ducati Streetfighter V4 S (₹28,20,000)</option>
+                <option value="Kawasaki Z900 Metallic Spark">Kawasaki Z900 (₹9,38,000)</option>
+                <option value="Triumph Speed Triple 1200 RS">Triumph Speed Triple 1200 RS (₹18,25,000)</option>
+                <option value="Bajaj Dominar 400 Touring Edition">Bajaj Dominar 400 (₹2,32,000)</option>
+              </optgroup>
+              <optgroup label="Cruisers & Modern Classics">
+                <option value="Kawasaki Vulcan 900 Classic">Kawasaki Vulcan 900 Classic (₹10,49,000)</option>
+                <option value="Harley-Davidson Fat Boy 107">Harley-Davidson Fat Boy 107 (₹21,99,000)</option>
+                <option value="Harley-Davidson Breakout Custom Flame">Harley Breakout Custom (₹24,50,000)</option>
+                <option value="Royal Enfield Classic 350 Chrome Red">Royal Enfield Classic 350 (₹2,24,000)</option>
+                <option value="Royal Enfield Hunter 350 Rebel Blue">Royal Enfield Hunter 350 (₹1,74,000)</option>
+                <option value="Jawa 42 Bobber Moonstone White">Jawa 42 Bobber (₹2,28,000)</option>
+              </optgroup>
+              <optgroup label="Adventure Touring">
+                <option value="KTM 1290 Super Adventure S">KTM 1290 Super Adventure S (₹22,75,000)</option>
+                <option value="BMW R1250 GS Trophy Edition">BMW R1250 GS Trophy (₹23,10,000)</option>
+                <option value="BMW F850 GS Adventure Rallye">BMW F850 GS Adventure (₹13,75,000)</option>
+              </optgroup>
+              <option value="Bespoke Custom Build / Unlisted Import">Other / Custom Import Consultation</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Purchase Condition *</label>
+            <select name="vehicleCondition" class="form-control form-select" required>
+              <option value="Brand New (Zero-Mileage Factory Allocation)">Brand New (Zero-Mileage Factory Allocation)</option>
+              <option value="Certified Pre-Owned (120-Point Inspected with Warranty)">Certified Pre-Owned (120-Point Inspected)</option>
+              <option value="Track / Race Prepared Specification">Track / Race Prepared Specification</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label">Customer Full Name *</label>
+            <input type="text" name="customerName" class="form-control" required placeholder="e.g. Rahul Sharma">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Mobile Number *</label>
+            <input type="tel" name="mobile" class="form-control" required placeholder="+91 98765 43210">
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label">Email Address *</label>
+            <input type="email" name="email" class="form-control" required placeholder="rahul@example.com">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Preferred Showroom / Delivery City *</label>
+            <select name="dealership" class="form-control form-select" required>
+              <option value="Bengaluru Flagship Experience Pavilion (Koramangala)">Bengaluru Flagship Pavilion (Koramangala)</option>
+              <option value="Mumbai High-Performance Marine Hub">Mumbai Marine Hub</option>
+              <option value="Delhi NCR International Circuit Facility">Delhi NCR Circuit Facility</option>
+              <option value="Hyderabad Showroom Hub">Hyderabad Showroom Hub</option>
+              <option value="Chennai Coast Track Pavilion">Chennai Coast Track Pavilion</option>
+              <option value="Enclosed Doorstep Nationwide Delivery">Enclosed Doorstep Nationwide Delivery</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label">Preferred Payment & Financing *</label>
+            <select name="purchaseMethod" class="form-control form-select" required>
+              <option value="Direct Wire / Full Upfront Dealership Transfer">Direct Wire / Full Dealership Transfer</option>
+              <option value="Bank Loan & Low EMI Financing Assistance">Bank Loan & Low EMI Financing Assistance</option>
+              <option value="Existing Motorcycle Trade-In / Exchange">Existing Motorcycle Trade-In / Exchange</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Expected Delivery Timeline *</label>
+            <select name="deliveryTimeline" class="form-control form-select" required>
+              <option value="Immediate Showroom Allocation (In-Stock)">Immediate Allocation (In-Stock Models)</option>
+              <option value="Within 15 to 30 Days">Within 15 to 30 Days</option>
+              <option value="Custom Scheduled Delivery Date">Custom Scheduled Delivery Date</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Custom Specifications & Delivery Notes (Optional)</label>
+          <textarea name="notes" class="form-control" rows="3" placeholder="Specify optional Akrapovič exhaust fitment, riding gear bundle sizing, registration preferences, or trade-in bike details..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-red" style="width: 100%; padding: 13px; font-size: 1rem; font-weight: 700; justify-content: center; margin-top: 6px;">
+          Submit Vehicle Sale Order &rarr;
+        </button>
+        <p style="text-align: center; color: var(--metallic-grey); font-size: 0.8rem; margin-top: 10px;">
+          🔒 Authorized reservation enquiry. No immediate payment deducted online. Sales consultant connects to confirm allocation.
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Drop to Top Button -->
+  <button id="scrollToTopBtn" class="scroll-to-top-btn" aria-label="Drop to top" title="Drop to top">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+</body>
+</html>

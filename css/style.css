@@ -258,6 +258,17 @@ button, input, select, textarea {
   box-shadow: 0 6px 20px var(--red-glow);
 }
 
+.bike-card-body > .btn-red,
+.bike-card-body > .btn-outline-red,
+.bike-card-body > button {
+  margin-top: auto;
+  height: 48px;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* Header & Nav */
 .site-header {
   position: fixed;
@@ -1629,5 +1640,36 @@ button, input, select, textarea {
     max-width: 100% !important;
   }
 }
+
+/* Tab View in 768px alone: keep bike card action buttons in same horizontal line */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .bike-card-actions {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    margin-top: auto !important;
+    gap: 10px !important;
+  }
+  .bike-card-actions .btn-red,
+  .bike-card-actions .btn-secondary,
+  .bike-card-actions .btn-outline-red {
+    flex: 1 1 0 !important;
+    width: auto !important;
+    max-width: 100% !important;
+    min-height: 44px !important;
+    height: 44px !important;
+    padding: 0 10px !important;
+    font-size: 0.88rem !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    box-sizing: border-box !important;
+  }
+}
+
 
 

@@ -248,6 +248,16 @@
       flex-direction: column;
       flex: 1;
     }
+    .bike-card-body > .btn-red,
+    .bike-card-body > .btn-outline-red,
+    .bike-card-body > button {
+      margin-top: auto;
+      height: 48px;
+      box-sizing: border-box;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
     .bike-card-price {
       font-family: var(--font-heading);
       font-size: 1.45rem;
@@ -613,6 +623,36 @@
         justify-self: stretch !important;
         width: 100% !important;
         max-width: 100% !important;
+      }
+    }
+
+    /* Tab View in 768px alone: keep bike card action buttons in same horizontal line */
+    @media (min-width: 768px) and (max-width: 1024px) {
+      .bike-card-actions {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+        margin-top: auto !important;
+        gap: 10px !important;
+      }
+      .bike-card-actions .btn-red,
+      .bike-card-actions .btn-secondary,
+      .bike-card-actions .btn-outline-red {
+        flex: 1 1 0 !important;
+        width: auto !important;
+        max-width: 100% !important;
+        min-height: 44px !important;
+        height: 44px !important;
+        padding: 0 10px !important;
+        font-size: 0.88rem !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        white-space: nowrap !important;
+        box-sizing: border-box !important;
       }
     }
   </style>
@@ -1082,8 +1122,8 @@
             <div class="bike-card-body">
               <div class="bike-card-price">₹21,50,000</div>
               <h3 class="bike-card-name">Yamaha YZF-R1 Raven Dark Edition</h3>
-              <p style="color: var(--text-dim); font-size: 0.88rem; margin-bottom: 16px;">Flagship CP4 crossplane track edition featuring stealth matte black bodywork and race electronics package.</p>
-              <button onclick="openMotorcycleOrderModal(1)" class="btn-red" style="width: 100%;">Reserve Special Edition</button>
+              <p style="color: var(--text-dim); font-size: 0.88rem; margin-bottom: 20px;">Flagship CP4 crossplane track edition featuring stealth matte black bodywork and race electronics package.</p>
+              <button onclick="openMotorcycleOrderModal(1)" class="btn-red" style="width: 100%; margin-top: auto; height: 48px; display: inline-flex; align-items: center; justify-content: center;">Reserve Special Edition</button>
             </div>
           </div>
 
@@ -1096,8 +1136,8 @@
             <div class="bike-card-body">
               <div class="bike-card-price">₹10,49,000</div>
               <h3 class="bike-card-name">Kawasaki Vulcan 900 Classic Chrome</h3>
-              <p style="color: var(--text-dim); font-size: 0.88rem; margin-bottom: 16px;">Classic metric cruiser featuring slash-cut chrome pipes, spoked wheels, and deep floorboards for effortless open-road touring.</p>
-              <button onclick="openMotorcycleOrderModal(1)" class="btn-outline-red" style="width: 100%; text-align: center;">View Cruiser Details</button>
+              <p style="color: var(--text-dim); font-size: 0.88rem; margin-bottom: 20px;">Classic metric cruiser featuring slash-cut chrome pipes, spoked wheels, and deep floorboards for effortless open-road touring.</p>
+              <button onclick="openMotorcycleOrderModal(1)" class="btn-outline-red" style="width: 100%; text-align: center; margin-top: auto; height: 48px; display: inline-flex; align-items: center; justify-content: center;">View Cruiser Details</button>
             </div>
           </div>
 
@@ -1110,8 +1150,8 @@
             <div class="bike-card-body">
               <div class="bike-card-price">₹3,49,000</div>
               <h3 class="bike-card-name">BSA Gold Star 650 British Heritage</h3>
-              <p style="color: var(--text-dim); font-size: 0.88rem; margin-bottom: 16px;">Legendary British single-cylinder roadster with chrome teardrop tank, red BSA star emblem, and vintage spoked wheels.</p>
-              <button onclick="openMotorcycleOrderModal(1)" class="btn-red" style="width: 100%;">Reserve Heritage Bike</button>
+              <p style="color: var(--text-dim); font-size: 0.88rem; margin-bottom: 20px;">Legendary British single-cylinder roadster with chrome teardrop tank, red BSA star emblem, and vintage spoked wheels.</p>
+              <button onclick="openMotorcycleOrderModal(1)" class="btn-red" style="width: 100%; margin-top: auto; height: 48px; display: inline-flex; align-items: center; justify-content: center;">Reserve Heritage Bike</button>
             </div>
           </div>
         </div>
